@@ -1,0 +1,65 @@
+[
+  {
+    "name": "elasticnet_select_raw_refined_lite",
+    "notes": "Smaller refined ElasticNet sweep on raw beta values.",
+    "rmse": 4.536755729855268,
+    "rmse_std": 0.08266902833349758,
+    "fit_time": 75.04046154022217,
+    "params": {
+      "model__alpha": 0.01,
+      "model__l1_ratio": 0.2,
+      "select__k": 5000
+    },
+    "top_candidates": [
+      {
+        "rmse": 4.536755729855268,
+        "rmse_std": 0.08266902833349758,
+        "params": {
+          "model__alpha": 0.01,
+          "model__l1_ratio": 0.2,
+          "select__k": 5000
+        }
+      },
+      {
+        "rmse": 4.541925631489961,
+        "rmse_std": 0.08153765610837188,
+        "params": {
+          "model__alpha": 0.03,
+          "model__l1_ratio": 0.2,
+          "select__k": 5000
+        }
+      },
+      {
+        "rmse": 4.549031173521276,
+        "rmse_std": 0.09126017280964567,
+        "params": {
+          "model__alpha": 0.02,
+          "model__l1_ratio": 0.2,
+          "select__k": 5000
+        }
+      },
+      {
+        "rmse": 4.554816770241016,
+        "rmse_std": 0.07315981626751786,
+        "params": {
+          "model__alpha": 0.02,
+          "model__l1_ratio": 0.2,
+          "select__k": 4000
+        }
+      },
+      {
+        "rmse": 4.557068306496082,
+        "rmse_std": 0.07911105505600861,
+        "params": {
+          "model__alpha": 0.02,
+          "model__l1_ratio": 0.1,
+          "select__k": 4000
+        }
+      }
+    ],
+    "n_candidates": 27,
+    "n_cv_fits": 81,
+    "elapsed_seconds": 1166.8124241799997,
+    "refit_time": 56.01841979399978
+  }
+]

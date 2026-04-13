@@ -1,0 +1,182 @@
+{
+  "search_summary": {
+    "simple_blend": [
+      {
+        "inter_weight": 0.1,
+        "rmse": 4.41693302385799,
+        "rmse_std": 0.11301356311063826
+      },
+      {
+        "inter_weight": 0.2,
+        "rmse": 4.417395457216648,
+        "rmse_std": 0.11696219916709744
+      },
+      {
+        "inter_weight": 0.3,
+        "rmse": 4.418042249524115,
+        "rmse_std": 0.12091628741633823
+      },
+      {
+        "inter_weight": 0.4,
+        "rmse": 4.418873769269355,
+        "rmse_std": 0.12485940480623124
+      },
+      {
+        "inter_weight": 0.5,
+        "rmse": 4.419890354873916,
+        "rmse_std": 0.12877736622896818
+      }
+    ],
+    "gender_blend": [
+      {
+        "female_inter_weight": 0.0,
+        "male_inter_weight": 0.6,
+        "rmse": 4.414508872439056,
+        "rmse_std": 0.12999462088117375
+      },
+      {
+        "female_inter_weight": 0.0,
+        "male_inter_weight": 0.4,
+        "rmse": 4.4146489491725305,
+        "rmse_std": 0.12324039022646255
+      },
+      {
+        "female_inter_weight": 0.0,
+        "male_inter_weight": 0.8,
+        "rmse": 4.414947442595751,
+        "rmse_std": 0.13646907988011
+      },
+      {
+        "female_inter_weight": 0.1,
+        "male_inter_weight": 0.6,
+        "rmse": 4.41550135526095,
+        "rmse_std": 0.13036103375163685
+      },
+      {
+        "female_inter_weight": 0.1,
+        "male_inter_weight": 0.4,
+        "rmse": 4.415642308031726,
+        "rmse_std": 0.12359440466481592
+      },
+      {
+        "female_inter_weight": 0.1,
+        "male_inter_weight": 0.8,
+        "rmse": 4.415939035375446,
+        "rmse_std": 0.13684369778823702
+      },
+      {
+        "female_inter_weight": 0.0,
+        "male_inter_weight": 1.0,
+        "rmse": 4.415966837303618,
+        "rmse_std": 0.14262911022182967
+      },
+      {
+        "female_inter_weight": 0.2,
+        "male_inter_weight": 0.6,
+        "rmse": 4.41653575642651,
+        "rmse_std": 0.13075967878962744
+      },
+      {
+        "female_inter_weight": 0.2,
+        "male_inter_weight": 0.4,
+        "rmse": 4.416677571605513,
+        "rmse_std": 0.12398290922542646
+      },
+      {
+        "female_inter_weight": 0.1,
+        "male_inter_weight": 1.0,
+        "rmse": 4.416957528549891,
+        "rmse_std": 0.1430083681654059
+      },
+      {
+        "female_inter_weight": 0.2,
+        "male_inter_weight": 0.8,
+        "rmse": 4.416972553903645,
+        "rmse_std": 0.13724862038603503
+      },
+      {
+        "female_inter_weight": 0.3,
+        "male_inter_weight": 0.6,
+        "rmse": 4.417612065460713,
+        "rmse_std": 0.13118962334741452
+      },
+      {
+        "female_inter_weight": 0.3,
+        "male_inter_weight": 0.4,
+        "rmse": 4.417754729337191,
+        "rmse_std": 0.12440490950559806
+      },
+      {
+        "female_inter_weight": 0.2,
+        "male_inter_weight": 1.0,
+        "rmse": 4.417990146622488,
+        "rmse_std": 0.14341628458605193
+      },
+      {
+        "female_inter_weight": 0.3,
+        "male_inter_weight": 0.8,
+        "rmse": 4.418047987783299,
+        "rmse_std": 0.1376829697782005
+      },
+      {
+        "female_inter_weight": 0.3,
+        "male_inter_weight": 1.0,
+        "rmse": 4.419064681198195,
+        "rmse_std": 0.14385202991823434
+      }
+    ],
+    "bias_correction": [
+      {
+        "correction_scale": 1.0,
+        "rmse": 4.416654541051825,
+        "rmse_std": 0.10908941910561025
+      },
+      {
+        "correction_scale": 0.75,
+        "rmse": 4.416654543696183,
+        "rmse_std": 0.10908942027468033
+      },
+      {
+        "correction_scale": 0.5,
+        "rmse": 4.416654546340542,
+        "rmse_std": 0.10908942144375024
+      },
+      {
+        "correction_scale": 0.25,
+        "rmse": 4.416654548984901,
+        "rmse_std": 0.10908942261281965
+      }
+    ]
+  },
+  "final_summary": [
+    {
+      "model": "gender_blend_best",
+      "rmse": 4.414508872439056,
+      "rmse_std": 0.12999462088117375,
+      "female_inter_weight": 0.0,
+      "male_inter_weight": 0.6
+    },
+    {
+      "model": "bias_corrected_ridge_best",
+      "rmse": 4.416654541051825,
+      "rmse_std": 0.10908941910561025,
+      "correction_scale": 1.0
+    },
+    {
+      "model": "simple_blend_best",
+      "rmse": 4.41693302385799,
+      "rmse_std": 0.11301356311063826,
+      "inter_weight": 0.1
+    },
+    {
+      "model": "global_ridge_best",
+      "rmse": 4.457730310566239,
+      "rmse_std": 0.2610739273849948
+    },
+    {
+      "model": "gender_interaction_best",
+      "rmse": 4.460811952604832,
+      "rmse_std": 0.29041259176011514
+    }
+  ]
+}

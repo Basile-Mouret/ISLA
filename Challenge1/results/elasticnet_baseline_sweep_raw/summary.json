@@ -1,0 +1,19 @@
+{
+  "ranked": [
+    {
+      "model": "baseline_v1",
+      "notes": "Exact `model_1.py` baseline.",
+      "alpha_count": 175,
+      "mean_rmse": 4.660420000639144,
+      "std_rmse": 0.4394116373720884,
+      "median_rmse": 4.777065256525201,
+      "best_rmse": 3.932502169946006,
+      "worst_rmse": 5.207777581172683,
+      "chosen_alpha_mean": 0.119847220562479,
+      "chosen_l1_ratio_counts": {
+        "0.1": 5,
+        "0.5": 7
+      }
+    }
+  ]
+}

@@ -1,0 +1,810 @@
+{
+  "quick_rows": [
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3200_e7_sf0.7",
+      "rmse": 4.674219313078007,
+      "rmse_std": 0.1016162722451201,
+      "params": "{\"alpha\": 0.01, \"k\": 3200, \"n_estimators\": 7, \"random_state\": 42, \"sample_fraction\": 0.7, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 7,
+        "sample_fraction": 0.7,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3200_e5_sf0.7",
+      "rmse": 4.679458615551071,
+      "rmse_std": 0.12758471457220671,
+      "params": "{\"alpha\": 0.01, \"k\": 3200, \"n_estimators\": 5, \"random_state\": 42, \"sample_fraction\": 0.7, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 5,
+        "sample_fraction": 0.7,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3200_e9_sf0.9",
+      "rmse": 4.681393263771003,
+      "rmse_std": 0.0488727216275827,
+      "params": "{\"alpha\": 0.01, \"k\": 3200, \"n_estimators\": 9, \"random_state\": 42, \"sample_fraction\": 0.9, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 9,
+        "sample_fraction": 0.9,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3200_e5_sf0.9",
+      "rmse": 4.685502759252501,
+      "rmse_std": 0.05401168868268997,
+      "params": "{\"alpha\": 0.01, \"k\": 3200, \"n_estimators\": 5, \"random_state\": 42, \"sample_fraction\": 0.9, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 5,
+        "sample_fraction": 0.9,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3200_e7_sf0.9",
+      "rmse": 4.687259154360561,
+      "rmse_std": 0.04515192045233463,
+      "params": "{\"alpha\": 0.01, \"k\": 3200, \"n_estimators\": 7, \"random_state\": 42, \"sample_fraction\": 0.9, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 7,
+        "sample_fraction": 0.9,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3200_e9_sf0.7",
+      "rmse": 4.698398528016971,
+      "rmse_std": 0.1250097324865319,
+      "params": "{\"alpha\": 0.01, \"k\": 3200, \"n_estimators\": 9, \"random_state\": 42, \"sample_fraction\": 0.7, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 9,
+        "sample_fraction": 0.7,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3200_e9_sf0.8",
+      "rmse": 4.703926551937896,
+      "rmse_std": 0.07273878296408019,
+      "params": "{\"alpha\": 0.01, \"k\": 3200, \"n_estimators\": 9, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 9,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3500_e9_sf0.9",
+      "rmse": 4.708304467117866,
+      "rmse_std": 0.03336809381331898,
+      "params": "{\"alpha\": 0.01, \"k\": 3500, \"n_estimators\": 9, \"random_state\": 42, \"sample_fraction\": 0.9, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3500,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 9,
+        "sample_fraction": 0.9,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3500_e7_sf0.7",
+      "rmse": 4.7092036862056865,
+      "rmse_std": 0.09582947329044346,
+      "params": "{\"alpha\": 0.01, \"k\": 3500, \"n_estimators\": 7, \"random_state\": 42, \"sample_fraction\": 0.7, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3500,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 7,
+        "sample_fraction": 0.7,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3500_e5_sf0.9",
+      "rmse": 4.713417972411976,
+      "rmse_std": 0.019608224685080285,
+      "params": "{\"alpha\": 0.01, \"k\": 3500, \"n_estimators\": 5, \"random_state\": 42, \"sample_fraction\": 0.9, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3500,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 5,
+        "sample_fraction": 0.9,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3500_e5_sf0.7",
+      "rmse": 4.717564041803683,
+      "rmse_std": 0.11887161196958004,
+      "params": "{\"alpha\": 0.01, \"k\": 3500, \"n_estimators\": 5, \"random_state\": 42, \"sample_fraction\": 0.7, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3500,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 5,
+        "sample_fraction": 0.7,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3200_e7_sf0.8",
+      "rmse": 4.722213647462206,
+      "rmse_std": 0.08558469911424013,
+      "params": "{\"alpha\": 0.01, \"k\": 3200, \"n_estimators\": 7, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 7,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3500_e7_sf0.9",
+      "rmse": 4.724733598607529,
+      "rmse_std": 0.023454277132961783,
+      "params": "{\"alpha\": 0.01, \"k\": 3500, \"n_estimators\": 7, \"random_state\": 42, \"sample_fraction\": 0.9, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3500,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 7,
+        "sample_fraction": 0.9,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3500_e9_sf0.8",
+      "rmse": 4.7313394703119895,
+      "rmse_std": 0.06569119031434183,
+      "params": "{\"alpha\": 0.01, \"k\": 3500, \"n_estimators\": 9, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3500,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 9,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3500_e9_sf0.7",
+      "rmse": 4.735648936539714,
+      "rmse_std": 0.11690447076751026,
+      "params": "{\"alpha\": 0.01, \"k\": 3500, \"n_estimators\": 9, \"random_state\": 42, \"sample_fraction\": 0.7, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3500,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 9,
+        "sample_fraction": 0.7,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3200_e5_sf0.8",
+      "rmse": 4.7374483000835,
+      "rmse_std": 0.09742392660806476,
+      "params": "{\"alpha\": 0.01, \"k\": 3200, \"n_estimators\": 5, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 5,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3500_e7_sf0.8",
+      "rmse": 4.740004491579245,
+      "rmse_std": 0.07254859562158836,
+      "params": "{\"alpha\": 0.01, \"k\": 3500, \"n_estimators\": 7, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3500,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 7,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3500_e5_sf0.8",
+      "rmse": 4.751737010904651,
+      "rmse_std": 0.07231398360527548,
+      "params": "{\"alpha\": 0.01, \"k\": 3500, \"n_estimators\": 5, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3500,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 5,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3800_e9_sf0.9",
+      "rmse": 4.760117661662325,
+      "rmse_std": 0.03404781281168517,
+      "params": "{\"alpha\": 0.01, \"k\": 3800, \"n_estimators\": 9, \"random_state\": 42, \"sample_fraction\": 0.9, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3800,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 9,
+        "sample_fraction": 0.9,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3800_e9_sf0.8",
+      "rmse": 4.771265350939345,
+      "rmse_std": 0.07612531129404504,
+      "params": "{\"alpha\": 0.01, \"k\": 3800, \"n_estimators\": 9, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3800,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 9,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3800_e5_sf0.8",
+      "rmse": 4.77214552445906,
+      "rmse_std": 0.06897095491300567,
+      "params": "{\"alpha\": 0.01, \"k\": 3800, \"n_estimators\": 5, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3800,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 5,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3800_e5_sf0.9",
+      "rmse": 4.773374994905171,
+      "rmse_std": 0.023860367406029755,
+      "params": "{\"alpha\": 0.01, \"k\": 3800, \"n_estimators\": 5, \"random_state\": 42, \"sample_fraction\": 0.9, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3800,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 5,
+        "sample_fraction": 0.9,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3800_e7_sf0.8",
+      "rmse": 4.7773284087589305,
+      "rmse_std": 0.08072655054810467,
+      "params": "{\"alpha\": 0.01, \"k\": 3800, \"n_estimators\": 7, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3800,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 7,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3800_e7_sf0.9",
+      "rmse": 4.777718726493654,
+      "rmse_std": 0.03190162055434886,
+      "params": "{\"alpha\": 0.01, \"k\": 3800, \"n_estimators\": 7, \"random_state\": 42, \"sample_fraction\": 0.9, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3800,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 7,
+        "sample_fraction": 0.9,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3800_e7_sf0.7",
+      "rmse": 4.780703729885521,
+      "rmse_std": 0.10092501214482759,
+      "params": "{\"alpha\": 0.01, \"k\": 3800, \"n_estimators\": 7, \"random_state\": 42, \"sample_fraction\": 0.7, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3800,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 7,
+        "sample_fraction": 0.7,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3800_e9_sf0.7",
+      "rmse": 4.793798211613173,
+      "rmse_std": 0.1206075389161074,
+      "params": "{\"alpha\": 0.01, \"k\": 3800, \"n_estimators\": 9, \"random_state\": 42, \"sample_fraction\": 0.7, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3800,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 9,
+        "sample_fraction": 0.7,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k3800_e5_sf0.7",
+      "rmse": 4.796675170565149,
+      "rmse_std": 0.11347108656596136,
+      "params": "{\"alpha\": 0.01, \"k\": 3800, \"n_estimators\": 5, \"random_state\": 42, \"sample_fraction\": 0.7, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3800,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 5,
+        "sample_fraction": 0.7,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k4200_e9_sf0.8",
+      "rmse": 4.806379966486799,
+      "rmse_std": 0.06849702487602817,
+      "params": "{\"alpha\": 0.01, \"k\": 4200, \"n_estimators\": 9, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 4200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 9,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k4200_e7_sf0.8",
+      "rmse": 4.811381839544796,
+      "rmse_std": 0.07423239943059579,
+      "params": "{\"alpha\": 0.01, \"k\": 4200, \"n_estimators\": 7, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 4200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 7,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k4200_e9_sf0.9",
+      "rmse": 4.815651913285596,
+      "rmse_std": 0.02193420950919057,
+      "params": "{\"alpha\": 0.01, \"k\": 4200, \"n_estimators\": 9, \"random_state\": 42, \"sample_fraction\": 0.9, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 4200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 9,
+        "sample_fraction": 0.9,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k4200_e5_sf0.8",
+      "rmse": 4.81889440877059,
+      "rmse_std": 0.05831664885991949,
+      "params": "{\"alpha\": 0.01, \"k\": 4200, \"n_estimators\": 5, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 4200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 5,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k4200_e5_sf0.9",
+      "rmse": 4.820116048866733,
+      "rmse_std": 0.020868406328451224,
+      "params": "{\"alpha\": 0.01, \"k\": 4200, \"n_estimators\": 5, \"random_state\": 42, \"sample_fraction\": 0.9, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 4200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 5,
+        "sample_fraction": 0.9,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k4200_e7_sf0.9",
+      "rmse": 4.82707120514185,
+      "rmse_std": 0.01917577396240231,
+      "params": "{\"alpha\": 0.01, \"k\": 4200, \"n_estimators\": 7, \"random_state\": 42, \"sample_fraction\": 0.9, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 4200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 7,
+        "sample_fraction": 0.9,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k4200_e7_sf0.7",
+      "rmse": 4.829799342074144,
+      "rmse_std": 0.0856676469787255,
+      "params": "{\"alpha\": 0.01, \"k\": 4200, \"n_estimators\": 7, \"random_state\": 42, \"sample_fraction\": 0.7, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 4200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 7,
+        "sample_fraction": 0.7,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k4200_e9_sf0.7",
+      "rmse": 4.846938423465289,
+      "rmse_std": 0.10464244655834139,
+      "params": "{\"alpha\": 0.01, \"k\": 4200, \"n_estimators\": 9, \"random_state\": 42, \"sample_fraction\": 0.7, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 4200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 9,
+        "sample_fraction": 0.7,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore_refine",
+      "model": "bagged_fscore_k4200_e5_sf0.7",
+      "rmse": 4.853967193664646,
+      "rmse_std": 0.10461851281737145,
+      "params": "{\"alpha\": 0.01, \"k\": 4200, \"n_estimators\": 5, \"random_state\": 42, \"sample_fraction\": 0.7, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 4200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 5,
+        "sample_fraction": 0.7,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "baseline",
+      "model": "global_ridge_best",
+      "rmse": 4.771086274560622,
+      "rmse_std": 0.023328584134110927,
+      "params": "{}",
+      "param_dict": {}
+    },
+    {
+      "family": "stable_fscore_refine",
+      "model": "stable_fscore_k2800_r15_sf0.7",
+      "rmse": 4.6647492527059695,
+      "rmse_std": 0.10050906417541858,
+      "params": "{\"alpha\": 0.01, \"k\": 2800, \"n_resamples\": 15, \"random_state\": 42, \"sample_fraction\": 0.7, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 2800,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_resamples": 15,
+        "sample_fraction": 0.7,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_fscore_refine",
+      "model": "stable_fscore_k3000_r15_sf0.7",
+      "rmse": 4.6726778539151175,
+      "rmse_std": 0.018760377151613973,
+      "params": "{\"alpha\": 0.01, \"k\": 3000, \"n_resamples\": 15, \"random_state\": 42, \"sample_fraction\": 0.7, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3000,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_resamples": 15,
+        "sample_fraction": 0.7,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_fscore_refine",
+      "model": "stable_fscore_k3000_r15_sf0.8",
+      "rmse": 4.685792490449868,
+      "rmse_std": 0.04843804793280028,
+      "params": "{\"alpha\": 0.01, \"k\": 3000, \"n_resamples\": 15, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3000,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_resamples": 15,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_fscore_refine",
+      "model": "stable_fscore_k2800_r15_sf0.8",
+      "rmse": 4.691060753669528,
+      "rmse_std": 0.10264050820664865,
+      "params": "{\"alpha\": 0.01, \"k\": 2800, \"n_resamples\": 15, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 2800,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_resamples": 15,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_fscore_refine",
+      "model": "stable_fscore_k3000_r25_sf0.7",
+      "rmse": 4.698860678088612,
+      "rmse_std": 0.015420186463856265,
+      "params": "{\"alpha\": 0.01, \"k\": 3000, \"n_resamples\": 25, \"random_state\": 42, \"sample_fraction\": 0.7, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3000,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_resamples": 25,
+        "sample_fraction": 0.7,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_fscore_refine",
+      "model": "stable_fscore_k2800_r25_sf0.8",
+      "rmse": 4.701635838439311,
+      "rmse_std": 0.12066780316906157,
+      "params": "{\"alpha\": 0.01, \"k\": 2800, \"n_resamples\": 25, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 2800,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_resamples": 25,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_fscore_refine",
+      "model": "stable_fscore_k3000_r25_sf0.8",
+      "rmse": 4.725203119600799,
+      "rmse_std": 0.08079178531366227,
+      "params": "{\"alpha\": 0.01, \"k\": 3000, \"n_resamples\": 25, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3000,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_resamples": 25,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_fscore_refine",
+      "model": "stable_fscore_k2800_r25_sf0.7",
+      "rmse": 4.735306355876595,
+      "rmse_std": 0.1271347822661155,
+      "params": "{\"alpha\": 0.01, \"k\": 2800, \"n_resamples\": 25, \"random_state\": 42, \"sample_fraction\": 0.7, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 2800,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_resamples": 25,
+        "sample_fraction": 0.7,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_fscore_refine",
+      "model": "stable_fscore_k3200_r15_sf0.7",
+      "rmse": 4.739735402654798,
+      "rmse_std": 0.044030374299772225,
+      "params": "{\"alpha\": 0.01, \"k\": 3200, \"n_resamples\": 15, \"random_state\": 42, \"sample_fraction\": 0.7, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_resamples": 15,
+        "sample_fraction": 0.7,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_fscore_refine",
+      "model": "stable_fscore_k3200_r25_sf0.7",
+      "rmse": 4.7473588072013015,
+      "rmse_std": 0.05031338253041532,
+      "params": "{\"alpha\": 0.01, \"k\": 3200, \"n_resamples\": 25, \"random_state\": 42, \"sample_fraction\": 0.7, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_resamples": 25,
+        "sample_fraction": 0.7,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_fscore_refine",
+      "model": "stable_fscore_k3500_r15_sf0.7",
+      "rmse": 4.7496365867750185,
+      "rmse_std": 0.009926990359516637,
+      "params": "{\"alpha\": 0.01, \"k\": 3500, \"n_resamples\": 15, \"random_state\": 42, \"sample_fraction\": 0.7, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3500,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_resamples": 15,
+        "sample_fraction": 0.7,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_fscore_refine",
+      "model": "stable_fscore_k3500_r25_sf0.8",
+      "rmse": 4.751339742658916,
+      "rmse_std": 0.041463534103104494,
+      "params": "{\"alpha\": 0.01, \"k\": 3500, \"n_resamples\": 25, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3500,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_resamples": 25,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_fscore_refine",
+      "model": "stable_fscore_k3500_r15_sf0.8",
+      "rmse": 4.758926127215364,
+      "rmse_std": 0.026235013597691117,
+      "params": "{\"alpha\": 0.01, \"k\": 3500, \"n_resamples\": 15, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3500,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_resamples": 15,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_fscore_refine",
+      "model": "stable_fscore_k3200_r25_sf0.8",
+      "rmse": 4.763361393807867,
+      "rmse_std": 0.07900017947627115,
+      "params": "{\"alpha\": 0.01, \"k\": 3200, \"n_resamples\": 25, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_resamples": 25,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_fscore_refine",
+      "model": "stable_fscore_k3200_r15_sf0.8",
+      "rmse": 4.774947106864154,
+      "rmse_std": 0.07297155520029588,
+      "params": "{\"alpha\": 0.01, \"k\": 3200, \"n_resamples\": 15, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3200,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_resamples": 15,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_fscore_refine",
+      "model": "stable_fscore_k3500_r25_sf0.7",
+      "rmse": 4.780659626199291,
+      "rmse_std": 0.05465414178501932,
+      "params": "{\"alpha\": 0.01, \"k\": 3500, \"n_resamples\": 25, \"random_state\": 42, \"sample_fraction\": 0.7, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3500,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_resamples": 25,
+        "sample_fraction": 0.7,
+        "random_state": 42
+      }
+    }
+  ],
+  "final_rows": [
+    {
+      "model": "bagged_fscore_k3200_e7_sf0.7",
+      "rmse": 4.4224264831174995,
+      "rmse_std": 0.2132819418049356
+    },
+    {
+      "model": "stable_fscore_k2800_r15_sf0.7",
+      "rmse": 4.440620468754156,
+      "rmse_std": 0.20067124148287357
+    },
+    {
+      "model": "global_ridge_best",
+      "rmse": 4.457730310566239,
+      "rmse_std": 0.2610739273849948
+    }
+  ],
+  "best_model_name": "bagged_fscore_k3200_e7_sf0.7"
+}

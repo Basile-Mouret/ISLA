@@ -1,0 +1,288 @@
+[
+  {
+    "name": "ridge_select_raw",
+    "notes": "Univariate filter plus Ridge on raw beta values.",
+    "rmse": 4.4730922031300056,
+    "rmse_std": 0.21339216471256298,
+    "fit_time": 0.7215501546859742,
+    "params": {
+      "model__alpha": 0.1,
+      "select__k": 3000
+    },
+    "top_candidates": [
+      {
+        "rmse": 4.4730922031300056,
+        "rmse_std": 0.21339216471256298,
+        "params": {
+          "model__alpha": 0.1,
+          "select__k": 3000
+        }
+      },
+      {
+        "rmse": 4.473245795566057,
+        "rmse_std": 0.21329902689670988,
+        "params": {
+          "model__alpha": 1.0,
+          "select__k": 3000
+        }
+      },
+      {
+        "rmse": 4.474849937701828,
+        "rmse_std": 0.21239126821851367,
+        "params": {
+          "model__alpha": 10.0,
+          "select__k": 3000
+        }
+      },
+      {
+        "rmse": 4.4961879833082925,
+        "rmse_std": 0.2053395181016142,
+        "params": {
+          "model__alpha": 100.0,
+          "select__k": 3000
+        }
+      },
+      {
+        "rmse": 4.657973546663537,
+        "rmse_std": 0.2214975213310448,
+        "params": {
+          "model__alpha": 0.1,
+          "select__k": 5000
+        }
+      }
+    ],
+    "n_candidates": 20,
+    "n_cv_fits": 200,
+    "elapsed_seconds": 23.308093465999264,
+    "refit_time": 0.2970418630002314
+  },
+  {
+    "name": "ridge_select_mvalue",
+    "notes": "Univariate filter plus Ridge on M-values.",
+    "rmse": 4.474876124743029,
+    "rmse_std": 0.20943343377068518,
+    "fit_time": 1.1740971565246583,
+    "params": {
+      "model__alpha": 0.1,
+      "select__k": 3000
+    },
+    "top_candidates": [
+      {
+        "rmse": 4.474876124743029,
+        "rmse_std": 0.20943343377068518,
+        "params": {
+          "model__alpha": 0.1,
+          "select__k": 3000
+        }
+      },
+      {
+        "rmse": 4.47490985196516,
+        "rmse_std": 0.20937623231321273,
+        "params": {
+          "model__alpha": 1.0,
+          "select__k": 3000
+        }
+      },
+      {
+        "rmse": 4.475330333951636,
+        "rmse_std": 0.20881734619956333,
+        "params": {
+          "model__alpha": 10.0,
+          "select__k": 3000
+        }
+      },
+      {
+        "rmse": 4.486183543114565,
+        "rmse_std": 0.2043735898783443,
+        "params": {
+          "model__alpha": 100.0,
+          "select__k": 3000
+        }
+      },
+      {
+        "rmse": 4.627285043363076,
+        "rmse_std": 0.2610789332227742,
+        "params": {
+          "model__alpha": 0.1,
+          "select__k": 5000
+        }
+      }
+    ],
+    "n_candidates": 20,
+    "n_cv_fits": 200,
+    "elapsed_seconds": 35.01010719000078,
+    "refit_time": 0.3715581659998861
+  },
+  {
+    "name": "pls_raw",
+    "notes": "Supervised latent factors with PLS.",
+    "rmse": 4.9771652909780855,
+    "rmse_std": 0.3642660494436387,
+    "fit_time": 2.6907399892807007,
+    "params": {
+      "model__n_components": 15
+    },
+    "top_candidates": [
+      {
+        "rmse": 4.9771652909780855,
+        "rmse_std": 0.3642660494436387,
+        "params": {
+          "model__n_components": 15
+        }
+      },
+      {
+        "rmse": 4.980922188335451,
+        "rmse_std": 0.36357646034598623,
+        "params": {
+          "model__n_components": 40
+        }
+      },
+      {
+        "rmse": 4.98092972927734,
+        "rmse_std": 0.36360382216758746,
+        "params": {
+          "model__n_components": 25
+        }
+      },
+      {
+        "rmse": 5.007961134763421,
+        "rmse_std": 0.3998165350027551,
+        "params": {
+          "model__n_components": 10
+        }
+      },
+      {
+        "rmse": 5.7461965715888415,
+        "rmse_std": 0.4535081473911367,
+        "params": {
+          "model__n_components": 5
+        }
+      }
+    ],
+    "n_candidates": 6,
+    "n_cv_fits": 60,
+    "elapsed_seconds": 23.643372002999968,
+    "refit_time": 0.9093839140005002
+  },
+  {
+    "name": "ridge_all_raw",
+    "notes": "All features, scaled beta values, Ridge.",
+    "rmse": 4.980938987644755,
+    "rmse_std": 0.36357450570634864,
+    "fit_time": 0.38973498344421387,
+    "params": {
+      "model__alpha": 0.1
+    },
+    "top_candidates": [
+      {
+        "rmse": 4.980938987644755,
+        "rmse_std": 0.36357450570634864,
+        "params": {
+          "model__alpha": 0.1
+        }
+      },
+      {
+        "rmse": 4.981090187781873,
+        "rmse_std": 0.36355691501532955,
+        "params": {
+          "model__alpha": 1.0
+        }
+      },
+      {
+        "rmse": 4.9826028476465325,
+        "rmse_std": 0.36338113555778534,
+        "params": {
+          "model__alpha": 10.0
+        }
+      },
+      {
+        "rmse": 4.997789190239087,
+        "rmse_std": 0.36163599131052143,
+        "params": {
+          "model__alpha": 100.0
+        }
+      },
+      {
+        "rmse": 5.151571898427003,
+        "rmse_std": 0.34537656179253734,
+        "params": {
+          "model__alpha": 1000.0
+        }
+      }
+    ],
+    "n_candidates": 5,
+    "n_cv_fits": 50,
+    "elapsed_seconds": 5.424296608999612,
+    "refit_time": 0.31549023800016585
+  },
+  {
+    "name": "pca_ridge_raw",
+    "notes": "Dimensionality reduction with PCA followed by Ridge.",
+    "rmse": 5.162810960313559,
+    "rmse_std": 0.3456515086492864,
+    "fit_time": 3.6145050048828127,
+    "params": {
+      "model__alpha": 0.1,
+      "reduce__n_components": 150
+    },
+    "top_candidates": [
+      {
+        "rmse": 5.162810960313559,
+        "rmse_std": 0.3456515086492864,
+        "params": {
+          "model__alpha": 0.1,
+          "reduce__n_components": 150
+        }
+      },
+      {
+        "rmse": 5.1629500049678985,
+        "rmse_std": 0.34563268627170857,
+        "params": {
+          "model__alpha": 1.0,
+          "reduce__n_components": 150
+        }
+      },
+      {
+        "rmse": 5.164340351847441,
+        "rmse_std": 0.3454446629541103,
+        "params": {
+          "model__alpha": 10.0,
+          "reduce__n_components": 150
+        }
+      },
+      {
+        "rmse": 5.17823322857483,
+        "rmse_std": 0.3435842416658707,
+        "params": {
+          "model__alpha": 100.0,
+          "reduce__n_components": 150
+        }
+      },
+      {
+        "rmse": 5.3096329416190295,
+        "rmse_std": 0.3724329150130944,
+        "params": {
+          "model__alpha": 0.1,
+          "reduce__n_components": 100
+        }
+      }
+    ],
+    "n_candidates": 20,
+    "n_cv_fits": 200,
+    "elapsed_seconds": 58.86761279100028,
+    "refit_time": 2.844768898001348
+  },
+  {
+    "name": "dummy_mean",
+    "notes": "Sanity-check baseline.",
+    "rmse": 11.822464517757387,
+    "rmse_std": 0.40046688508337025,
+    "fit_time": 0.09635488986968994,
+    "params": null,
+    "top_candidates": [],
+    "n_candidates": 1,
+    "n_cv_fits": 10,
+    "elapsed_seconds": 1.3600184520000766,
+    "refit_time": 0.0
+  }
+]

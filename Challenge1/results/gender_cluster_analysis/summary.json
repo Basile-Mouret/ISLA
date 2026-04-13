@@ -1,0 +1,508 @@
+{
+  "age_summary": {
+    "female_mean_age": 50.71264367816092,
+    "male_mean_age": 54.0354609929078,
+    "female_count": 348,
+    "male_count": 141
+  },
+  "cluster_summary": {
+    "best_cluster_count": 2,
+    "cluster_metrics": [
+      {
+        "n_clusters": 2,
+        "silhouette": 0.3851992045947121,
+        "inertia": 89169.51674473521
+      },
+      {
+        "n_clusters": 3,
+        "silhouette": 0.31498580987821007,
+        "inertia": 67182.8492433918
+      },
+      {
+        "n_clusters": 4,
+        "silhouette": 0.2467807522550338,
+        "inertia": 57919.46694652121
+      },
+      {
+        "n_clusters": 5,
+        "silhouette": 0.1918744422901953,
+        "inertia": 53535.55518172118
+      },
+      {
+        "n_clusters": 6,
+        "silhouette": 0.1806210140260058,
+        "inertia": 51346.27785131603
+      }
+    ],
+    "cluster_summary": [
+      {
+        "cluster": 0,
+        "sample_count": 161,
+        "mean_age": 57.484472049689444,
+        "female_fraction": 0.7267080745341615
+      },
+      {
+        "cluster": 1,
+        "sample_count": 328,
+        "mean_age": 48.81707317073171,
+        "female_fraction": 0.7042682926829268
+      }
+    ],
+    "explained_variance_ratio_2d": [
+      0.4523623379900992,
+      0.05011223798735689
+    ]
+  },
+  "search_results": {
+    "gender_split_ridge": [
+      {
+        "family": "gender_split_ridge",
+        "label": "gender_split_fk3500_mk500_a0.1",
+        "params": {
+          "female_k": 3500,
+          "male_k": 500,
+          "female_alpha": 0.1,
+          "male_alpha": 0.1
+        },
+        "rmse": 4.799222372001363,
+        "rmse_std": 0.2731956384266297
+      },
+      {
+        "family": "gender_split_ridge",
+        "label": "gender_split_fk3500_mk500_a0.01",
+        "params": {
+          "female_k": 3500,
+          "male_k": 500,
+          "female_alpha": 0.01,
+          "male_alpha": 0.01
+        },
+        "rmse": 4.799249543083464,
+        "rmse_std": 0.2730566224259391
+      },
+      {
+        "family": "gender_split_ridge",
+        "label": "gender_split_fk3000_mk500_a0.1",
+        "params": {
+          "female_k": 3000,
+          "male_k": 500,
+          "female_alpha": 0.1,
+          "male_alpha": 0.1
+        },
+        "rmse": 4.818434366186354,
+        "rmse_std": 0.2338154610373931
+      },
+      {
+        "family": "gender_split_ridge",
+        "label": "gender_split_fk3000_mk500_a0.01",
+        "params": {
+          "female_k": 3000,
+          "male_k": 500,
+          "female_alpha": 0.01,
+          "male_alpha": 0.01
+        },
+        "rmse": 4.818462521827886,
+        "rmse_std": 0.23368423027990143
+      },
+      {
+        "family": "gender_split_ridge",
+        "label": "gender_split_fk3500_mk1000_a0.01",
+        "params": {
+          "female_k": 3500,
+          "male_k": 1000,
+          "female_alpha": 0.01,
+          "male_alpha": 0.01
+        },
+        "rmse": 4.957715496056492,
+        "rmse_std": 0.24809837536691132
+      },
+      {
+        "family": "gender_split_ridge",
+        "label": "gender_split_fk3500_mk1000_a0.1",
+        "params": {
+          "female_k": 3500,
+          "male_k": 1000,
+          "female_alpha": 0.1,
+          "male_alpha": 0.1
+        },
+        "rmse": 4.957797487255199,
+        "rmse_std": 0.24809269928502184
+      },
+      {
+        "family": "gender_split_ridge",
+        "label": "gender_split_fk5000_mk500_a0.1",
+        "params": {
+          "female_k": 5000,
+          "male_k": 500,
+          "female_alpha": 0.1,
+          "male_alpha": 0.1
+        },
+        "rmse": 4.974869008481663,
+        "rmse_std": 0.22513415413807372
+      },
+      {
+        "family": "gender_split_ridge",
+        "label": "gender_split_fk5000_mk500_a0.01",
+        "params": {
+          "female_k": 5000,
+          "male_k": 500,
+          "female_alpha": 0.01,
+          "male_alpha": 0.01
+        },
+        "rmse": 4.974900522531739,
+        "rmse_std": 0.2250021650023968
+      },
+      {
+        "family": "gender_split_ridge",
+        "label": "gender_split_fk3000_mk1000_a0.01",
+        "params": {
+          "female_k": 3000,
+          "male_k": 1000,
+          "female_alpha": 0.01,
+          "male_alpha": 0.01
+        },
+        "rmse": 4.975116676290983,
+        "rmse_std": 0.23139381775170037
+      },
+      {
+        "family": "gender_split_ridge",
+        "label": "gender_split_fk3000_mk1000_a0.1",
+        "params": {
+          "female_k": 3000,
+          "male_k": 1000,
+          "female_alpha": 0.1,
+          "male_alpha": 0.1
+        },
+        "rmse": 4.975196166860359,
+        "rmse_std": 0.23138105285995095
+      },
+      {
+        "family": "gender_split_ridge",
+        "label": "gender_split_fk3500_mk1500_a0.01",
+        "params": {
+          "female_k": 3500,
+          "male_k": 1500,
+          "female_alpha": 0.01,
+          "male_alpha": 0.01
+        },
+        "rmse": 5.076851682865625,
+        "rmse_std": 0.20085175183296766
+      },
+      {
+        "family": "gender_split_ridge",
+        "label": "gender_split_fk3500_mk1500_a0.1",
+        "params": {
+          "female_k": 3500,
+          "male_k": 1500,
+          "female_alpha": 0.1,
+          "male_alpha": 0.1
+        },
+        "rmse": 5.07691034403403,
+        "rmse_std": 0.20085708379306513
+      },
+      {
+        "family": "gender_split_ridge",
+        "label": "gender_split_fk3000_mk1500_a0.01",
+        "params": {
+          "female_k": 3000,
+          "male_k": 1500,
+          "female_alpha": 0.01,
+          "male_alpha": 0.01
+        },
+        "rmse": 5.092982540758026,
+        "rmse_std": 0.2027968773620259
+      },
+      {
+        "family": "gender_split_ridge",
+        "label": "gender_split_fk3000_mk1500_a0.1",
+        "params": {
+          "female_k": 3000,
+          "male_k": 1500,
+          "female_alpha": 0.1,
+          "male_alpha": 0.1
+        },
+        "rmse": 5.093039022860836,
+        "rmse_std": 0.20279028423085876
+      },
+      {
+        "family": "gender_split_ridge",
+        "label": "gender_split_fk5000_mk1000_a0.01",
+        "params": {
+          "female_k": 5000,
+          "male_k": 1000,
+          "female_alpha": 0.01,
+          "male_alpha": 0.01
+        },
+        "rmse": 5.127513314613833,
+        "rmse_std": 0.2049586291452025
+      },
+      {
+        "family": "gender_split_ridge",
+        "label": "gender_split_fk5000_mk1000_a0.1",
+        "params": {
+          "female_k": 5000,
+          "male_k": 1000,
+          "female_alpha": 0.1,
+          "male_alpha": 0.1
+        },
+        "rmse": 5.127585693326416,
+        "rmse_std": 0.20495530196564
+      },
+      {
+        "family": "gender_split_ridge",
+        "label": "gender_split_fk5000_mk1500_a0.01",
+        "params": {
+          "female_k": 5000,
+          "male_k": 1500,
+          "female_alpha": 0.01,
+          "male_alpha": 0.01
+        },
+        "rmse": 5.2421418245037,
+        "rmse_std": 0.16618849335544517
+      },
+      {
+        "family": "gender_split_ridge",
+        "label": "gender_split_fk5000_mk1500_a0.1",
+        "params": {
+          "female_k": 5000,
+          "male_k": 1500,
+          "female_alpha": 0.1,
+          "male_alpha": 0.1
+        },
+        "rmse": 5.242192018491997,
+        "rmse_std": 0.16619523719247234
+      }
+    ],
+    "gender_interaction_ridge": [
+      {
+        "family": "gender_interaction_ridge",
+        "label": "gender_interaction_ik100_a0.01",
+        "params": {
+          "main_k": 3500,
+          "interaction_k": 100,
+          "alpha": 0.01
+        },
+        "rmse": 4.427758922899203,
+        "rmse_std": 0.14761226407958625
+      },
+      {
+        "family": "gender_interaction_ridge",
+        "label": "gender_interaction_ik100_a0.1",
+        "params": {
+          "main_k": 3500,
+          "interaction_k": 100,
+          "alpha": 0.1
+        },
+        "rmse": 4.427779173795119,
+        "rmse_std": 0.147599664701752
+      },
+      {
+        "family": "gender_interaction_ridge",
+        "label": "gender_interaction_ik100_a1.0",
+        "params": {
+          "main_k": 3500,
+          "interaction_k": 100,
+          "alpha": 1.0
+        },
+        "rmse": 4.427982071425045,
+        "rmse_std": 0.14747377570380987
+      },
+      {
+        "family": "gender_interaction_ridge",
+        "label": "gender_interaction_ik300_a0.01",
+        "params": {
+          "main_k": 3500,
+          "interaction_k": 300,
+          "alpha": 0.01
+        },
+        "rmse": 4.432677244330139,
+        "rmse_std": 0.1444044105976084
+      },
+      {
+        "family": "gender_interaction_ridge",
+        "label": "gender_interaction_ik300_a0.1",
+        "params": {
+          "main_k": 3500,
+          "interaction_k": 300,
+          "alpha": 0.1
+        },
+        "rmse": 4.432700936147666,
+        "rmse_std": 0.14439298560563327
+      },
+      {
+        "family": "gender_interaction_ridge",
+        "label": "gender_interaction_ik300_a1.0",
+        "params": {
+          "main_k": 3500,
+          "interaction_k": 300,
+          "alpha": 1.0
+        },
+        "rmse": 4.432938157133368,
+        "rmse_std": 0.1442788575607366
+      },
+      {
+        "family": "gender_interaction_ridge",
+        "label": "gender_interaction_ik500_a0.01",
+        "params": {
+          "main_k": 3500,
+          "interaction_k": 500,
+          "alpha": 0.01
+        },
+        "rmse": 4.460488761441714,
+        "rmse_std": 0.12837065802782754
+      },
+      {
+        "family": "gender_interaction_ridge",
+        "label": "gender_interaction_ik500_a0.1",
+        "params": {
+          "main_k": 3500,
+          "interaction_k": 500,
+          "alpha": 0.1
+        },
+        "rmse": 4.46051347696549,
+        "rmse_std": 0.12835849522455434
+      },
+      {
+        "family": "gender_interaction_ridge",
+        "label": "gender_interaction_ik500_a1.0",
+        "params": {
+          "main_k": 3500,
+          "interaction_k": 500,
+          "alpha": 1.0
+        },
+        "rmse": 4.460760887846767,
+        "rmse_std": 0.12823702278209434
+      }
+    ],
+    "cluster_augmented_ridge": [
+      {
+        "family": "cluster_augmented_ridge",
+        "label": "cluster_augmented_k2_a0.01",
+        "params": {
+          "main_k": 3500,
+          "alpha": 0.01,
+          "n_clusters": 2,
+          "pca_components": 20
+        },
+        "rmse": 4.415887481423113,
+        "rmse_std": 0.1100007544594534
+      },
+      {
+        "family": "cluster_augmented_ridge",
+        "label": "cluster_augmented_k2_a0.1",
+        "params": {
+          "main_k": 3500,
+          "alpha": 0.1,
+          "n_clusters": 2,
+          "pca_components": 20
+        },
+        "rmse": 4.415908312665801,
+        "rmse_std": 0.10998061406683726
+      },
+      {
+        "family": "cluster_augmented_ridge",
+        "label": "cluster_augmented_k3_a0.01",
+        "params": {
+          "main_k": 3500,
+          "alpha": 0.01,
+          "n_clusters": 3,
+          "pca_components": 20
+        },
+        "rmse": 4.416831672948912,
+        "rmse_std": 0.10974576341145498
+      },
+      {
+        "family": "cluster_augmented_ridge",
+        "label": "cluster_augmented_k4_a0.01",
+        "params": {
+          "main_k": 3500,
+          "alpha": 0.01,
+          "n_clusters": 4,
+          "pca_components": 20
+        },
+        "rmse": 4.416844548960548,
+        "rmse_std": 0.10951143043570116
+      },
+      {
+        "family": "cluster_augmented_ridge",
+        "label": "cluster_augmented_k3_a0.1",
+        "params": {
+          "main_k": 3500,
+          "alpha": 0.1,
+          "n_clusters": 3,
+          "pca_components": 20
+        },
+        "rmse": 4.416852599216216,
+        "rmse_std": 0.10972574207588606
+      },
+      {
+        "family": "cluster_augmented_ridge",
+        "label": "cluster_augmented_k4_a0.1",
+        "params": {
+          "main_k": 3500,
+          "alpha": 0.1,
+          "n_clusters": 4,
+          "pca_components": 20
+        },
+        "rmse": 4.416865392195568,
+        "rmse_std": 0.10949142259804445
+      }
+    ]
+  },
+  "final_results": [
+    {
+      "model": "cluster_augmented_k2_a0.01",
+      "rmse": 4.457377747171411,
+      "rmse_std": 0.26165912604007574
+    },
+    {
+      "model": "global_ridge_best",
+      "rmse": 4.457730310566239,
+      "rmse_std": 0.2610739273849948
+    },
+    {
+      "model": "gender_interaction_ik100_a0.01",
+      "rmse": 4.460811952604832,
+      "rmse_std": 0.29041259176011514
+    },
+    {
+      "model": "gender_split_fk3500_mk500_a0.1",
+      "rmse": 4.870551448676558,
+      "rmse_std": 0.28225323838084754
+    }
+  ],
+  "model_summaries": [
+    {
+      "model": "cluster_augmented_k2_a0.01",
+      "overall_rmse": 4.396196661431785,
+      "female_rmse": 4.329125345718813,
+      "male_rmse": 4.55751192614717,
+      "female_bias": -0.03592617277899751,
+      "male_bias": 0.4017773927034554
+    },
+    {
+      "model": "global_ridge_best",
+      "overall_rmse": 4.396513118901334,
+      "female_rmse": 4.329468701715454,
+      "male_rmse": 4.5577656149112205,
+      "female_bias": -0.036521995360115925,
+      "male_bias": 0.4028922625115599
+    },
+    {
+      "model": "gender_interaction_ik100_a0.01",
+      "overall_rmse": 4.401504548760118,
+      "female_rmse": 4.352863293676119,
+      "male_rmse": 4.519315300053553,
+      "female_bias": -0.027574728581812806,
+      "male_bias": 0.3774518007409998
+    },
+    {
+      "model": "gender_split_fk3500_mk500_a0.1",
+      "overall_rmse": 4.7489701823605825,
+      "female_rmse": 4.621556162777017,
+      "male_rmse": 5.04969845703761,
+      "female_bias": 0.0683841051159875,
+      "male_bias": -0.054216903797688176
+    }
+  ],
+  "best_model_name": "cluster_augmented_k2_a0.01"
+}

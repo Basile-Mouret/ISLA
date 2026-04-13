@@ -1,0 +1,148 @@
+{
+  "search_rows": [
+    {
+      "model": "bagged_ridge_blend",
+      "female_inter_weight": 0.0,
+      "male_inter_weight": 0.7,
+      "rmse": 4.3748475028433,
+      "rmse_std": 0.07842479392870248
+    },
+    {
+      "model": "bagged_ridge_blend",
+      "female_inter_weight": 0.0,
+      "male_inter_weight": 0.9,
+      "rmse": 4.375493100250751,
+      "rmse_std": 0.0956590735225652
+    },
+    {
+      "model": "bagged_ridge_blend",
+      "female_inter_weight": 0.1,
+      "male_inter_weight": 0.7,
+      "rmse": 4.376366908507153,
+      "rmse_std": 0.08226700767181096
+    },
+    {
+      "model": "bagged_ridge_blend",
+      "female_inter_weight": 0.0,
+      "male_inter_weight": 0.6,
+      "rmse": 4.376686169378095,
+      "rmse_std": 0.07032215508206759
+    },
+    {
+      "model": "bagged_ridge_blend",
+      "female_inter_weight": 0.1,
+      "male_inter_weight": 0.9,
+      "rmse": 4.376984486135467,
+      "rmse_std": 0.10005695282827534
+    },
+    {
+      "model": "bagged_ridge_blend",
+      "female_inter_weight": 0.1,
+      "male_inter_weight": 0.6,
+      "rmse": 4.378222633074264,
+      "rmse_std": 0.07353681355524207
+    },
+    {
+      "model": "bagged_ridge_blend",
+      "female_inter_weight": 0.2,
+      "male_inter_weight": 0.7,
+      "rmse": 4.378665657589345,
+      "rmse_std": 0.08629475272615812
+    },
+    {
+      "model": "bagged_ridge_blend",
+      "female_inter_weight": 0.2,
+      "male_inter_weight": 0.9,
+      "rmse": 4.3792560425013605,
+      "rmse_std": 0.1045258186661204
+    },
+    {
+      "model": "bagged_ridge_blend",
+      "female_inter_weight": 0.0,
+      "male_inter_weight": 0.5,
+      "rmse": 4.379931113322902,
+      "rmse_std": 0.06498813602529346
+    },
+    {
+      "model": "bagged_ridge_blend",
+      "female_inter_weight": 0.2,
+      "male_inter_weight": 0.6,
+      "rmse": 4.3805375687113735,
+      "rmse_std": 0.07704702260638682
+    },
+    {
+      "model": "bagged_ridge_blend",
+      "female_inter_weight": 0.1,
+      "male_inter_weight": 0.5,
+      "rmse": 4.381486450311956,
+      "rmse_std": 0.06716068791694384
+    },
+    {
+      "model": "bagged_ridge_blend",
+      "female_inter_weight": 0.2,
+      "male_inter_weight": 0.5,
+      "rmse": 4.383819106363094,
+      "rmse_std": 0.06977579685894254
+    },
+    {
+      "model": "bagged_ridge_blend",
+      "female_inter_weight": 0.0,
+      "male_inter_weight": 0.3,
+      "rmse": 4.390514071702616,
+      "rmse_std": 0.0722038530377235
+    },
+    {
+      "model": "bagged_ridge_blend",
+      "female_inter_weight": 0.1,
+      "male_inter_weight": 0.3,
+      "rmse": 4.392111858603213,
+      "rmse_std": 0.07137708820003345
+    },
+    {
+      "model": "bagged_ridge_blend",
+      "female_inter_weight": 0.2,
+      "male_inter_weight": 0.3,
+      "rmse": 4.394483897328149,
+      "rmse_std": 0.07111322098711065
+    }
+  ],
+  "best_search": {
+    "model": "bagged_ridge_blend",
+    "female_inter_weight": 0.0,
+    "male_inter_weight": 0.7,
+    "rmse": 4.3748475028433,
+    "rmse_std": 0.07842479392870248
+  },
+  "final_rows": [
+    {
+      "model": "bagged_ridge_gender_blend_best_search",
+      "rmse": 4.400710562984431,
+      "rmse_std": 0.2572611251408719
+    },
+    {
+      "model": "bagged_ridge_gender_blend_prev_weights",
+      "rmse": 4.400857646809666,
+      "rmse_std": 0.24842049697274657
+    },
+    {
+      "model": "bagged_ridge_base",
+      "rmse": 4.4224264831174995,
+      "rmse_std": 0.2132819418049356
+    },
+    {
+      "model": "plain_ridge_gender_blend",
+      "rmse": 4.4489900558570135,
+      "rmse_std": 0.2763110879829986
+    },
+    {
+      "model": "plain_ridge_base",
+      "rmse": 4.457730310566239,
+      "rmse_std": 0.2610739273849948
+    },
+    {
+      "model": "gender_interaction_only",
+      "rmse": 4.460811952604832,
+      "rmse_std": 0.29041259176011514
+    }
+  ]
+}

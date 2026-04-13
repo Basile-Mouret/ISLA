@@ -1,6 +1,6 @@
 import argparse
 import os
-from model import Model
+from model_1 import Model
 
 import pandas as pd
 
@@ -45,7 +45,7 @@ def main():
     m.fit(X_train, y_train)
     print('Running Prediction')
     prediction = m.predict(X_test)
-    df = pd.DataFrame({'age': pd.Series(prediction).astype(float)})
+    df = pd.DataFrame(prediction, columns=['age'])
     output_path = os.path.join(output_dir, 'y_pred.csv')
     df.to_csv(output_path, index=False)
     print(f'Wrote predictions to {output_path}')

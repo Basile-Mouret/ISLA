@@ -1,0 +1,301 @@
+{
+  "quick_rows": [
+    {
+      "family": "bagged_fscore",
+      "model": "bagged_fscore_k3500",
+      "rmse": 4.740004491579245,
+      "rmse_std": 0.07254859562158836,
+      "params": "{\"alpha\": 0.01, \"k\": 3500, \"n_estimators\": 7, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3500,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 7,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_fscore",
+      "model": "bagged_fscore_k5000",
+      "rmse": 4.893120582119665,
+      "rmse_std": 0.07047680611552244,
+      "params": "{\"alpha\": 0.01, \"k\": 5000, \"n_estimators\": 7, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 5000,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_estimators": 7,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_gender",
+      "model": "bagged_gender_k3500_gp0.25",
+      "rmse": 4.732724562885739,
+      "rmse_std": 0.08244340519130158,
+      "params": "{\"alpha\": 0.01, \"gap_penalty\": 0.25, \"k\": 3500, \"n_estimators\": 7, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"gender_stable\"}",
+      "param_dict": {
+        "k": 3500,
+        "alpha": 0.01,
+        "score_method": "gender_stable",
+        "n_estimators": 7,
+        "sample_fraction": 0.8,
+        "gap_penalty": 0.25,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_gender",
+      "model": "bagged_gender_k3500_gp0.5",
+      "rmse": 4.762112452338033,
+      "rmse_std": 0.08973516913929618,
+      "params": "{\"alpha\": 0.01, \"gap_penalty\": 0.5, \"k\": 3500, \"n_estimators\": 7, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"gender_stable\"}",
+      "param_dict": {
+        "k": 3500,
+        "alpha": 0.01,
+        "score_method": "gender_stable",
+        "n_estimators": 7,
+        "sample_fraction": 0.8,
+        "gap_penalty": 0.5,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_gender",
+      "model": "bagged_gender_k5000_gp0.5",
+      "rmse": 4.919262136757843,
+      "rmse_std": 0.1353163642021698,
+      "params": "{\"alpha\": 0.01, \"gap_penalty\": 0.5, \"k\": 5000, \"n_estimators\": 7, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"gender_stable\"}",
+      "param_dict": {
+        "k": 5000,
+        "alpha": 0.01,
+        "score_method": "gender_stable",
+        "n_estimators": 7,
+        "sample_fraction": 0.8,
+        "gap_penalty": 0.5,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "bagged_gender",
+      "model": "bagged_gender_k5000_gp0.25",
+      "rmse": 4.920310713327573,
+      "rmse_std": 0.11567500918329482,
+      "params": "{\"alpha\": 0.01, \"gap_penalty\": 0.25, \"k\": 5000, \"n_estimators\": 7, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"gender_stable\"}",
+      "param_dict": {
+        "k": 5000,
+        "alpha": 0.01,
+        "score_method": "gender_stable",
+        "n_estimators": 7,
+        "sample_fraction": 0.8,
+        "gap_penalty": 0.25,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "baseline",
+      "model": "global_ridge_best",
+      "rmse": 4.771086274560622,
+      "rmse_std": 0.023328584134110927,
+      "params": "{}",
+      "param_dict": {}
+    },
+    {
+      "family": "stable_fscore",
+      "model": "stable_fscore_k3000",
+      "rmse": 4.685792490449868,
+      "rmse_std": 0.04843804793280028,
+      "params": "{\"alpha\": 0.01, \"k\": 3000, \"n_resamples\": 15, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3000,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_resamples": 15,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_fscore",
+      "model": "stable_fscore_k3500",
+      "rmse": 4.758926127215364,
+      "rmse_std": 0.026235013597691117,
+      "params": "{\"alpha\": 0.01, \"k\": 3500, \"n_resamples\": 15, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 3500,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_resamples": 15,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_fscore",
+      "model": "stable_fscore_k5000",
+      "rmse": 4.908862807553933,
+      "rmse_std": 0.10525745051697773,
+      "params": "{\"alpha\": 0.01, \"k\": 5000, \"n_resamples\": 15, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"f_score\"}",
+      "param_dict": {
+        "k": 5000,
+        "alpha": 0.01,
+        "score_method": "f_score",
+        "n_resamples": 15,
+        "sample_fraction": 0.8,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_gender",
+      "model": "stable_gender_k3500_gp0.25",
+      "rmse": 4.741667138486164,
+      "rmse_std": 0.09039025173856866,
+      "params": "{\"alpha\": 0.01, \"gap_penalty\": 0.25, \"k\": 3500, \"n_resamples\": 15, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"gender_stable\"}",
+      "param_dict": {
+        "k": 3500,
+        "alpha": 0.01,
+        "score_method": "gender_stable",
+        "n_resamples": 15,
+        "sample_fraction": 0.8,
+        "gap_penalty": 0.25,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_gender",
+      "model": "stable_gender_k3500_gp0.5",
+      "rmse": 4.766017828800847,
+      "rmse_std": 0.07882431635008498,
+      "params": "{\"alpha\": 0.01, \"gap_penalty\": 0.5, \"k\": 3500, \"n_resamples\": 15, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"gender_stable\"}",
+      "param_dict": {
+        "k": 3500,
+        "alpha": 0.01,
+        "score_method": "gender_stable",
+        "n_resamples": 15,
+        "sample_fraction": 0.8,
+        "gap_penalty": 0.5,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_gender",
+      "model": "stable_gender_k3000_gp0.25",
+      "rmse": 4.776558002239748,
+      "rmse_std": 0.11831454637469307,
+      "params": "{\"alpha\": 0.01, \"gap_penalty\": 0.25, \"k\": 3000, \"n_resamples\": 15, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"gender_stable\"}",
+      "param_dict": {
+        "k": 3000,
+        "alpha": 0.01,
+        "score_method": "gender_stable",
+        "n_resamples": 15,
+        "sample_fraction": 0.8,
+        "gap_penalty": 0.25,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_gender",
+      "model": "stable_gender_k3000_gp0.5",
+      "rmse": 4.830727029588549,
+      "rmse_std": 0.1453120856266034,
+      "params": "{\"alpha\": 0.01, \"gap_penalty\": 0.5, \"k\": 3000, \"n_resamples\": 15, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"gender_stable\"}",
+      "param_dict": {
+        "k": 3000,
+        "alpha": 0.01,
+        "score_method": "gender_stable",
+        "n_resamples": 15,
+        "sample_fraction": 0.8,
+        "gap_penalty": 0.5,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_gender",
+      "model": "stable_gender_k5000_gp0.5",
+      "rmse": 4.8687717136148985,
+      "rmse_std": 0.058149306968754665,
+      "params": "{\"alpha\": 0.01, \"gap_penalty\": 0.5, \"k\": 5000, \"n_resamples\": 15, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"gender_stable\"}",
+      "param_dict": {
+        "k": 5000,
+        "alpha": 0.01,
+        "score_method": "gender_stable",
+        "n_resamples": 15,
+        "sample_fraction": 0.8,
+        "gap_penalty": 0.5,
+        "random_state": 42
+      }
+    },
+    {
+      "family": "stable_gender",
+      "model": "stable_gender_k5000_gp0.25",
+      "rmse": 4.931501406479749,
+      "rmse_std": 0.14713677695846777,
+      "params": "{\"alpha\": 0.01, \"gap_penalty\": 0.25, \"k\": 5000, \"n_resamples\": 15, \"random_state\": 42, \"sample_fraction\": 0.8, \"score_method\": \"gender_stable\"}",
+      "param_dict": {
+        "k": 5000,
+        "alpha": 0.01,
+        "score_method": "gender_stable",
+        "n_resamples": 15,
+        "sample_fraction": 0.8,
+        "gap_penalty": 0.25,
+        "random_state": 42
+      }
+    }
+  ],
+  "final_results": [
+    {
+      "model": "bagged_fscore_k3500",
+      "rmse": 4.447902723335697,
+      "rmse_std": 0.20192325379425433
+    },
+    {
+      "model": "bagged_gender_k3500_gp0.25",
+      "rmse": 4.452251309228752,
+      "rmse_std": 0.18612830716351741
+    },
+    {
+      "model": "stable_fscore_k3000",
+      "rmse": 4.453186557921856,
+      "rmse_std": 0.2259158502150481
+    },
+    {
+      "model": "global_ridge_best",
+      "rmse": 4.457730310566239,
+      "rmse_std": 0.2610739273849948
+    },
+    {
+      "model": "stable_gender_k3500_gp0.25",
+      "rmse": 4.504985726021893,
+      "rmse_std": 0.18319877379630614
+    }
+  ],
+  "overlap_rows": [
+    {
+      "model": "stable_fscore_k3000",
+      "selected_features": 3000,
+      "overlap_with_baseline": 3000,
+      "jaccard_with_baseline": 0.8571428571428571
+    },
+    {
+      "model": "stable_gender_k3500_gp0.25",
+      "selected_features": 3500,
+      "overlap_with_baseline": 3159,
+      "jaccard_with_baseline": 0.8224420723769852
+    },
+    {
+      "model": "bagged_fscore_k3500",
+      "selected_features": 3500,
+      "overlap_with_baseline": 3371,
+      "jaccard_with_baseline": 0.9289060347203086
+    },
+    {
+      "model": "bagged_gender_k3500_gp0.25",
+      "selected_features": 3500,
+      "overlap_with_baseline": 3107,
+      "jaccard_with_baseline": 0.7980991523246853
+    }
+  ],
+  "best_model_name": "bagged_fscore_k3500"
+}
