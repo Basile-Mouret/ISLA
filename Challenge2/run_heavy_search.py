@@ -1,4 +1,5 @@
 import argparse
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import hashlib
 import itertools
 import logging
@@ -9,6 +10,7 @@ import pandas as pd
 from mi_models import SUBJECTS, build_model, load_subject_data, weighted_vote
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import StratifiedKFold
+from threadpoolctl import threadpool_limits
 
 
 MODEL_SPECS = [
@@ -31,6 +33,13 @@ def parse_args():
     parser.add_argument("--submissions-dir", default="submissions")
     parser.add_argument("--sample-rate-hz", type=float, default=256.0)
     parser.add_argument("--cv-folds", type=int, default=4)
+    parser.add_argument("--n-jobs", type=int, default=1, help="Number of parallel candidate workers.")
+    parser.add_argument(
+        "--inner-threads",
+        type=int,
+        default=1,
+        help="Number of BLAS/OpenMP threads per worker (set to 1 to avoid oversubscription).",
+    )
 
     parser.add_argument("--start-min", type=int, default=192)
     parser.add_argument("--start-max", type=int, default=960)
@@ -80,6 +89,16 @@ def setup_logging(log_file_path):
     file_handler.setFormatter(formatter)
     logger.addHandler(file_handler)
     return logger
+
+
+def set_thread_env(inner_threads):
+    value = str(int(inner_threads))
+    os.environ["OMP_NUM_THREADS"] = value
+    os.environ["OPENBLAS_NUM_THREADS"] = value
+    os.environ["MKL_NUM_THREADS"] = value
+    os.environ["BLIS_NUM_THREADS"] = value
+    os.environ["VECLIB_MAXIMUM_THREADS"] = value
+    os.environ["NUMEXPR_NUM_THREADS"] = value
 
 
 def run_tag(args):
@@ -164,6 +183,45 @@ def estimate_fit_counts(subjects, windows, cv_folds):
     candidates = len(subjects) * len(MODEL_SPECS) * len(windows)
     cv_fits = candidates * cv_folds
     return candidates, cv_fits
+
+
+def evaluate_candidate_task(
+    subject,
+    model_name,
+    family,
+    start,
+    stop,
+    sample_rate_hz,
+    X_train,
+    y_train,
+    split_list,
+    cache_path,
+    inner_threads,
+):
+    oof_pred = np.empty(y_train.shape[0], dtype="<U16")
+    fold_scores = []
+
+    with threadpool_limits(limits=inner_threads):
+        for train_idx, valid_idx in split_list:
+            model = build_model(model_name=model_name, sample_rate_hz=sample_rate_hz, start=start, stop=stop)
+            model.fit(X_train[train_idx], y_train[train_idx])
+            pred = model.predict(X_train[valid_idx])
+            oof_pred[valid_idx] = pred
+            fold_scores.append(accuracy_score(y_train[valid_idx], pred))
+
+    temp_path = f"{cache_path}.tmp.npy"
+    np.save(temp_path, oof_pred)
+    os.replace(temp_path, cache_path)
+
+    return {
+        "subject": subject,
+        "model": model_name,
+        "family": family,
+        "start": int(start),
+        "stop": int(stop),
+        "mean_accuracy": float(np.mean(fold_scores)),
+        "std_accuracy": float(np.std(fold_scores)),
+    }
 
 
 def top_candidate_pool(subject_results, args):
@@ -330,6 +388,7 @@ def main():
     args = parse_args()
     os.makedirs(args.submissions_dir, exist_ok=True)
     os.makedirs(args.cache_dir, exist_ok=True)
+    set_thread_env(args.inner_threads)
 
     tag = run_tag(args)
     log_file = args.log_file or os.path.join(args.submissions_dir, f"heavy_search_{tag}.log")
@@ -341,6 +400,8 @@ def main():
     logger.info("Models CSV: %s", args.models_csv)
     logger.info("Models MD: %s", args.models_md)
     logger.info("Output model name: %s", args.output_model_name)
+    logger.info("Parallel workers (n_jobs): %d", args.n_jobs)
+    logger.info("Inner threads per worker: %d", args.inner_threads)
 
     X_a, _, _ = load_subject_data(args.data_dir, "A")
     n_times = X_a.shape[-1]
@@ -377,48 +438,72 @@ def main():
         split_list = list(splitter.split(X_train, y_train))
         logger.info("Searching subject %s (%d train samples)", subject, X_train.shape[0])
 
+        pending = []
         for spec in MODEL_SPECS:
             model_name = spec["model"]
             family = spec["family"]
             for start, stop in windows:
                 key = candidate_key(subject, model_name, start, stop)
-                cache_path = oof_cache_path(args.cache_dir, subject, model_name, start, stop)
                 if key in done_keys:
                     logger.info("[cache skip] %s | %s | samples_%d_%d", subject, model_name, start, stop)
                     continue
+                pending.append((model_name, family, start, stop, key, oof_cache_path(args.cache_dir, subject, model_name, start, stop)))
 
+        logger.info("Subject %s pending candidates: %d", subject, len(pending))
+        if not pending:
+            continue
+
+        if args.n_jobs <= 1:
+            for model_name, family, start, stop, key, cache_path in pending:
                 processed += 1
                 label = f"{subject} | {model_name} | samples_{start}_{stop}"
                 logger.info("[search %d/%d] START %s", processed, remaining_configs, label)
-
-                oof_pred = np.empty(y_train.shape[0], dtype="<U16")
-                fold_scores = []
-                for fold_index, (train_idx, valid_idx) in enumerate(split_list, start=1):
-                    logger.info("[search %d/%d] FOLD %d/%d %s", processed, remaining_configs, fold_index, len(split_list), label)
-                    model = build_model(model_name=model_name, sample_rate_hz=args.sample_rate_hz, start=start, stop=stop)
-                    model.fit(X_train[train_idx], y_train[train_idx])
-                    pred = model.predict(X_train[valid_idx])
-                    oof_pred[valid_idx] = pred
-                    score = accuracy_score(y_train[valid_idx], pred)
-                    fold_scores.append(score)
-                    logger.info("[search %d/%d] FOLD %d/%d SCORE %.4f %s", processed, remaining_configs, fold_index, len(split_list), score, label)
-
-                mean_score = float(np.mean(fold_scores))
-                std_score = float(np.std(fold_scores))
-                np.save(cache_path, oof_pred)
-
-                row = {
-                    "subject": subject,
-                    "model": model_name,
-                    "family": family,
-                    "start": start,
-                    "stop": stop,
-                    "mean_accuracy": mean_score,
-                    "std_accuracy": std_score,
-                }
+                row = evaluate_candidate_task(
+                    subject=subject,
+                    model_name=model_name,
+                    family=family,
+                    start=start,
+                    stop=stop,
+                    sample_rate_hz=args.sample_rate_hz,
+                    X_train=X_train,
+                    y_train=y_train,
+                    split_list=split_list,
+                    cache_path=cache_path,
+                    inner_threads=args.inner_threads,
+                )
                 append_result_row(args.results_csv, row)
                 done_keys.add(key)
-                logger.info("[search %d/%d] DONE %s mean=%.4f std=%.4f", processed, remaining_configs, label, mean_score, std_score)
+                logger.info("[search %d/%d] DONE %s mean=%.4f std=%.4f", processed, remaining_configs, label, row["mean_accuracy"], row["std_accuracy"])
+        else:
+            with ThreadPoolExecutor(max_workers=args.n_jobs) as executor:
+                future_map = {}
+                for model_name, family, start, stop, key, cache_path in pending:
+                    label = f"{subject} | {model_name} | samples_{start}_{stop}"
+                    logger.info("[submit] %s", label)
+                    future = executor.submit(
+                        evaluate_candidate_task,
+                        subject,
+                        model_name,
+                        family,
+                        start,
+                        stop,
+                        args.sample_rate_hz,
+                        X_train,
+                        y_train,
+                        split_list,
+                        cache_path,
+                        args.inner_threads,
+                    )
+                    future_map[future] = (model_name, start, stop, key)
+
+                for future in as_completed(future_map):
+                    model_name, start, stop, key = future_map[future]
+                    processed += 1
+                    label = f"{subject} | {model_name} | samples_{start}_{stop}"
+                    row = future.result()
+                    append_result_row(args.results_csv, row)
+                    done_keys.add(key)
+                    logger.info("[search %d/%d] DONE %s mean=%.4f std=%.4f", processed, remaining_configs, label, row["mean_accuracy"], row["std_accuracy"])
 
     results = load_results(args.results_csv)
     selection_rows = []
