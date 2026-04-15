@@ -1,1 +1,4 @@
 data/
+submissions/
+__pycache__/
+*.pyc

@@ -1,3 +1,0 @@
-subject,source,model,window,start,stop,family,previous_mean_accuracy,previous_std_accuracy,oof_accuracy,cache_path
-A,fine_tuned,fbcsp_broad_c6_k16_lda,samples_640_1472,640,1472,fbcsp,0.7929386370644466,0.0699558128122539,0.7928571428571428,submissions/mne_pyriemann_ensemble_cache/cd48b19a4850852f.npz
-A,base,riemann_ts_lr_6_35,samples_256_1024,256,1024,riemann,0.692722787542399,0.0218791892034623,0.6928571428571428,submissions/mne_pyriemann_ensemble_cache/af10f0077df1ff50.npz

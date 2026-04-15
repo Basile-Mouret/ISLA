@@ -1,2 +1,0 @@
-subject,member_order,ensemble_size,weight_mode,model,window,start,stop,family,source,oof_accuracy
-A,1,1,equal,fbcsp_broad_c6_k16_lda,samples_640_1472,640,1472,fbcsp,fine_tuned,0.7928571428571428
