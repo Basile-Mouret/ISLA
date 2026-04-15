@@ -1,0 +1,3 @@
+subject,model,mean_accuracy,std_accuracy
+E,fbcsp_dense_c6_k20_lda,0.8572309589885908,0.025103245295080637
+E,fbcsp_broad_c6_k16_lda,0.857076780758557,0.052990212930028084

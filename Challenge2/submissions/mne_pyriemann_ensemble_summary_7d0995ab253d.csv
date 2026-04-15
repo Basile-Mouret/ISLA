@@ -1,0 +1,7 @@
+subject,ensemble_size,weight_mode,ensemble_oof_accuracy,best_single_oof_accuracy,best_single_model,best_single_window
+A,1,equal,0.7928571428571428,0.7928571428571428,fbcsp_broad_c6_k16_lda,samples_640_1472
+B,0,fallback,,,fallback,fallback
+C,0,fallback,,,fallback,fallback
+D,0,fallback,,,fallback,fallback
+E,0,fallback,,,fallback,fallback
+F,0,fallback,,,fallback,fallback

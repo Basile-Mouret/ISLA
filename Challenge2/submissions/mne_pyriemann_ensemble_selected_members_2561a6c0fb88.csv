@@ -1,0 +1,6 @@
+subject,member_order,ensemble_size,weight_mode,model,window,start,stop,family,source,oof_accuracy
+A,1,1,equal,fbcsp_broad_c6_k16_lda,samples_640_1472,640,1472,fbcsp,fine_tuned,0.7928571428571428
+B,1,2,equal,riemann_fgmdm_8_30_lwf,samples_704_1536,704,1536,riemann_fgmdm,fine_tuned,0.7714285714285715
+B,2,2,equal,riemann_fgmdm_8_30_lwf,samples_768_1537,768,1537,riemann_fgmdm,fine_tuned,0.7642857142857142
+E,1,1,equal,fbcsp_dense_c6_k20_lda,samples_320_1344,320,1344,fbcsp,fine_tuned,0.8571428571428571
+F,1,1,equal,fbcsp_broad_c6_k16_lda,samples_512_1536,512,1536,fbcsp,fine_tuned,0.8071428571428572

@@ -1,0 +1,3 @@
+subject,model,window,start,stop,mean_accuracy,std_accuracy,fold_scores,family,anchor_model,source
+A,fbcsp_broad_c6_k16_lda,samples_640_1472,640,1472,0.7929386370644466,0.0699558128122539,"[0.7021276595744681, 0.8723404255319149, 0.8043478260869565]",fbcsp,mne_fbcsp_lda,fine_tuned
+A,riemann_ts_lr_6_35,samples_256_1024,256,1024,0.692722787542399,0.0218791892034623,"[0.6808510638297872, 0.723404255319149, 0.6739130434782609]",riemann,riemann_ts_lr_6_35,base

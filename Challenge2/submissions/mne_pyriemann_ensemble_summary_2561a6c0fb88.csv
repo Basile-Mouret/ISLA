@@ -1,0 +1,7 @@
+subject,ensemble_size,weight_mode,ensemble_oof_accuracy,best_single_oof_accuracy,best_single_model,best_single_window
+A,1,equal,0.7928571428571428,0.7928571428571428,fbcsp_broad_c6_k16_lda,samples_640_1472
+B,2,equal,0.7785714285714286,0.7714285714285715,riemann_fgmdm_8_30_lwf,samples_704_1536
+E,1,equal,0.8571428571428571,0.8571428571428571,fbcsp_dense_c6_k20_lda,samples_320_1344
+F,1,equal,0.8071428571428572,0.8071428571428572,fbcsp_broad_c6_k16_lda,samples_512_1536
+C,0,fallback,,,fallback,fallback
+D,0,fallback,,,fallback,fallback
