@@ -1,4 +1,6 @@
 data/
+.venv/
+info/
 submissions/
 __pycache__/
 *.pyc
