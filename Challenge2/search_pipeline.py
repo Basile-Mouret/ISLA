@@ -2,14 +2,16 @@ import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import os
 
-import numpy as np
 import pandas as pd
 from sklearn.model_selection import StratifiedKFold
 
 from utils.file_manager import (
     append_result_row,
     candidate_key,
+    cached_result_keys,
+    ensure_parent_dir,
     load_results,
+    load_oof_lookup,
     load_subject_data,
     oof_cache_path,
     package_submission_dir,
@@ -109,13 +111,7 @@ def main():
 
     total_candidates, total_cv_fits = estimate_fit_counts(SUBJECTS, MODEL_SPECS, windows, args.cv_folds)
     existing = load_results(args.results_csv)
-    done_keys = set()
-    if not existing.empty:
-        done_keys = {
-            candidate_key(row.subject, row.model, row.start, row.stop)
-            for row in existing.itertuples(index=False)
-            if os.path.exists(oof_cache_path(args.cache_dir, row.subject, row.model, row.start, row.stop))
-        }
+    done_keys = cached_result_keys(existing, args.cache_dir) if not existing.empty else set()
     remaining_configs = total_candidates - len(done_keys)
 
     logger.info("Total candidate configs: %d", total_candidates)
@@ -137,18 +133,21 @@ def main():
 
         pending = []
         for spec in MODEL_SPECS:
+            model_name = spec["model"]
+            family = spec["family"]
             for start, stop in windows:
-                key = candidate_key(subject, spec["model"], start, stop)
+                key = candidate_key(subject, model_name, start, stop)
                 if key in done_keys:
-                    logger.info("[cache skip] %s | %s | samples_%d_%d", subject, spec["model"], start, stop)
+                    logger.info("[cache skip] %s | %s | samples_%d_%d", subject, model_name, start, stop)
                     continue
+                cache_path = oof_cache_path(args.cache_dir, subject, model_name, start, stop)
                 pending.append((
-                    spec["model"],
-                    spec["family"],
+                    model_name,
+                    family,
                     start,
                     stop,
                     key,
-                    oof_cache_path(args.cache_dir, subject, spec["model"], start, stop),
+                    cache_path,
                 ))
 
         logger.info("Subject %s pending candidates: %d", subject, len(pending))
@@ -241,14 +240,7 @@ def main():
         pool = top_candidate_pool(subject_results, args)
         logger.info("Subject %s pool size: %d", subject, len(pool))
 
-        oof_lookup = {}
-        for row in pool.itertuples(index=False):
-            cache_path = oof_cache_path(args.cache_dir, row.subject, row.model, row.start, row.stop)
-            if not os.path.exists(cache_path):
-                raise FileNotFoundError(
-                    f"Missing OOF cache for {row.subject}/{row.model}/{row.start}:{row.stop}: {cache_path}"
-                )
-            oof_lookup[candidate_key(row.subject, row.model, row.start, row.stop)] = np.load(cache_path)
+        oof_lookup = load_oof_lookup(pool, args.cache_dir)
 
         selected_combo, metrics = select_diverse_combo(pool, oof_lookup, y_train, args)
         logger.info(
@@ -261,19 +253,18 @@ def main():
             metrics["score"],
         )
 
-        subject_rows = []
-        for rank, row in enumerate(selected_combo, start=1):
-            subject_rows.append(
-                {
-                    "subject": subject,
-                    "rank": rank,
-                    "model": row.model,
-                    "family": row.family,
-                    "start": int(row.start),
-                    "stop": int(row.stop),
-                    "weight": float(row.mean_accuracy),
-                }
-            )
+        subject_rows = [
+            {
+                "subject": subject,
+                "rank": rank,
+                "model": row.model,
+                "family": row.family,
+                "start": int(row.start),
+                "stop": int(row.stop),
+                "weight": float(row.mean_accuracy),
+            }
+            for rank, row in enumerate(selected_combo, start=1)
+        ]
 
         final_predictions[subject] = predict_weighted_ensemble(subject_rows, X_train, y_train, X_test, args.sample_rate_hz)
         model_rows.extend(subject_rows)
@@ -289,7 +280,9 @@ def main():
         )
 
     selection_df = pd.DataFrame(selection_rows).sort_values("subject")
+    ensure_parent_dir(args.selection_csv)
     selection_df.to_csv(args.selection_csv, index=False)
+    ensure_parent_dir(args.models_csv)
     pd.DataFrame(model_rows).sort_values(["subject", "rank"]).to_csv(args.models_csv, index=False)
 
     output_dir = os.path.join(args.submissions_dir, args.output_model_name)

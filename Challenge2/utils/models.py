@@ -1,3 +1,5 @@
+import os
+
 import mne
 import numpy as np
 from mne.decoding import CSP
@@ -16,6 +18,9 @@ from threadpoolctl import threadpool_limits
 
 
 mne.set_log_level("ERROR")
+
+BROAD_BANDS = ((4.0, 8.0), (8.0, 12.0), (12.0, 16.0), (16.0, 24.0), (24.0, 32.0), (32.0, 40.0))
+DENSE_BANDS = ((6.0, 10.0), (8.0, 12.0), (10.0, 14.0), (12.0, 16.0), (16.0, 20.0), (20.0, 24.0), (24.0, 28.0), (28.0, 32.0))
 
 MODEL_SPECS = [
     {"model": "mne_fbcsp_lda", "family": "fbcsp"},
@@ -125,13 +130,52 @@ def _build_fbcsp_model(sample_rate_hz, start, stop, bands, n_components, select_
     ])
 
 
+def _build_csp_lda_model(sample_rate_hz, start, stop, low_cut_hz, high_cut_hz):
+    return Pipeline([
+        ("crop", TemporalCropper(start=start, stop=stop)),
+        ("bandpass", BandpassFilter(sample_rate_hz=sample_rate_hz, low_cut_hz=low_cut_hz, high_cut_hz=high_cut_hz, order=4)),
+        (
+            "csp",
+            CSP(
+                n_components=6,
+                reg="oas",
+                log=True,
+                cov_est="epoch",
+                norm_trace=False,
+                component_order="mutual_info",
+            ),
+        ),
+        ("clf", LinearDiscriminantAnalysis(solver="lsqr", shrinkage="auto")),
+    ])
+
+
+def _build_riemann_ts_model(sample_rate_hz, start, stop, low_cut_hz, high_cut_hz):
+    return Pipeline([
+        ("crop", TemporalCropper(start=start, stop=stop)),
+        ("bandpass", BandpassFilter(sample_rate_hz=sample_rate_hz, low_cut_hz=low_cut_hz, high_cut_hz=high_cut_hz, order=4)),
+        ("cov", Covariances(estimator="oas")),
+        ("tangent", TangentSpace(metric="riemann")),
+        ("scale", StandardScaler()),
+        ("clf", LogisticRegression(C=1.0, max_iter=4000)),
+    ])
+
+
+def _build_riemann_fgmdm_model(sample_rate_hz, start, stop, cov_estimator):
+    return Pipeline([
+        ("crop", TemporalCropper(start=start, stop=stop)),
+        ("bandpass", BandpassFilter(sample_rate_hz=sample_rate_hz, low_cut_hz=8.0, high_cut_hz=30.0, order=4)),
+        ("cov", Covariances(estimator=cov_estimator)),
+        ("clf", FgMDM(metric="riemann")),
+    ])
+
+
 def build_model(model_name, sample_rate_hz, start, stop):
     if model_name == "mne_fbcsp_lda":
         return _build_fbcsp_model(
             sample_rate_hz,
             start,
             stop,
-            bands=((4.0, 8.0), (8.0, 12.0), (12.0, 16.0), (16.0, 24.0), (24.0, 32.0), (32.0, 40.0)),
+            bands=BROAD_BANDS,
             n_components=4,
             select_k=12,
         )
@@ -141,7 +185,7 @@ def build_model(model_name, sample_rate_hz, start, stop):
             sample_rate_hz,
             start,
             stop,
-            bands=((4.0, 8.0), (8.0, 12.0), (12.0, 16.0), (16.0, 24.0), (24.0, 32.0), (32.0, 40.0)),
+            bands=BROAD_BANDS,
             n_components=6,
             select_k=16,
         )
@@ -151,64 +195,25 @@ def build_model(model_name, sample_rate_hz, start, stop):
             sample_rate_hz,
             start,
             stop,
-            bands=((6.0, 10.0), (8.0, 12.0), (10.0, 14.0), (12.0, 16.0), (16.0, 20.0), (20.0, 24.0), (24.0, 28.0), (28.0, 32.0)),
+            bands=DENSE_BANDS,
             n_components=6,
             select_k=20,
         )
 
     if model_name == "mne_csp_8_30_lda":
-        return Pipeline([
-            ("crop", TemporalCropper(start=start, stop=stop)),
-            ("bandpass", BandpassFilter(sample_rate_hz=sample_rate_hz, low_cut_hz=8.0, high_cut_hz=30.0, order=4)),
-            (
-                "csp",
-                CSP(
-                    n_components=6,
-                    reg="oas",
-                    log=True,
-                    cov_est="epoch",
-                    norm_trace=False,
-                    component_order="mutual_info",
-                ),
-            ),
-            ("clf", LinearDiscriminantAnalysis(solver="lsqr", shrinkage="auto")),
-        ])
+        return _build_csp_lda_model(sample_rate_hz, start, stop, low_cut_hz=8.0, high_cut_hz=30.0)
 
     if model_name == "riemann_ts_lr_6_35":
-        return Pipeline([
-            ("crop", TemporalCropper(start=start, stop=stop)),
-            ("bandpass", BandpassFilter(sample_rate_hz=sample_rate_hz, low_cut_hz=6.0, high_cut_hz=35.0, order=4)),
-            ("cov", Covariances(estimator="oas")),
-            ("tangent", TangentSpace(metric="riemann")),
-            ("scale", StandardScaler()),
-            ("clf", LogisticRegression(C=1.0, max_iter=4000)),
-        ])
+        return _build_riemann_ts_model(sample_rate_hz, start, stop, low_cut_hz=6.0, high_cut_hz=35.0)
 
     if model_name == "riemann_ts_lr_8_30":
-        return Pipeline([
-            ("crop", TemporalCropper(start=start, stop=stop)),
-            ("bandpass", BandpassFilter(sample_rate_hz=sample_rate_hz, low_cut_hz=8.0, high_cut_hz=30.0, order=4)),
-            ("cov", Covariances(estimator="oas")),
-            ("tangent", TangentSpace(metric="riemann")),
-            ("scale", StandardScaler()),
-            ("clf", LogisticRegression(C=1.0, max_iter=4000)),
-        ])
+        return _build_riemann_ts_model(sample_rate_hz, start, stop, low_cut_hz=8.0, high_cut_hz=30.0)
 
     if model_name == "riemann_fgmdm_8_30":
-        return Pipeline([
-            ("crop", TemporalCropper(start=start, stop=stop)),
-            ("bandpass", BandpassFilter(sample_rate_hz=sample_rate_hz, low_cut_hz=8.0, high_cut_hz=30.0, order=4)),
-            ("cov", Covariances(estimator="oas")),
-            ("clf", FgMDM(metric="riemann")),
-        ])
+        return _build_riemann_fgmdm_model(sample_rate_hz, start, stop, cov_estimator="oas")
 
     if model_name == "riemann_fgmdm_8_30_lwf":
-        return Pipeline([
-            ("crop", TemporalCropper(start=start, stop=stop)),
-            ("bandpass", BandpassFilter(sample_rate_hz=sample_rate_hz, low_cut_hz=8.0, high_cut_hz=30.0, order=4)),
-            ("cov", Covariances(estimator="lwf")),
-            ("clf", FgMDM(metric="riemann")),
-        ])
+        return _build_riemann_fgmdm_model(sample_rate_hz, start, stop, cov_estimator="lwf")
 
     raise ValueError(f"Unknown model: {model_name}")
 

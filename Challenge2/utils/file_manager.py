@@ -8,10 +8,17 @@ import pandas as pd
 from .helpers import SUBJECTS
 
 
+REQUIRED_RESULTS_COLUMNS = ["subject", "model", "family", "start", "stop", "mean_accuracy", "std_accuracy"]
+
+
+def ensure_parent_dir(path):
+    os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
+
+
 def load_subject_data(data_dir, subject):
-    X_train = np.load(f"{data_dir}/subject_{subject}_X_train.npy")
-    y_train = np.load(f"{data_dir}/subject_{subject}_y_train.npy")
-    X_test = np.load(f"{data_dir}/subject_{subject}_X_test.npy")
+    X_train = np.load(os.path.join(data_dir, f"subject_{subject}_X_train.npy"))
+    y_train = np.load(os.path.join(data_dir, f"subject_{subject}_y_train.npy"))
+    X_test = np.load(os.path.join(data_dir, f"subject_{subject}_X_test.npy"))
     return X_train, y_train, X_test
 
 
@@ -54,7 +61,7 @@ def package_submission_dir(model_dir, output_path=None):
         validate_prediction_csv(csv_path)
         csv_paths.append(csv_path)
 
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    ensure_parent_dir(output_path)
     with zipfile.ZipFile(output_path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
         for csv_path in csv_paths:
             archive.write(csv_path, arcname=os.path.basename(csv_path))
@@ -75,8 +82,7 @@ def load_results(path):
     if not os.path.exists(path):
         return pd.DataFrame()
     df = pd.read_csv(path)
-    required = ["subject", "model", "family", "start", "stop", "mean_accuracy", "std_accuracy"]
-    for column in required:
+    for column in REQUIRED_RESULTS_COLUMNS:
         if column not in df.columns:
             raise ValueError(f"Missing column '{column}' in existing results file: {path}")
     df["start"] = df["start"].astype(int)
@@ -84,6 +90,27 @@ def load_results(path):
     return df.drop_duplicates(subset=["subject", "model", "start", "stop"], keep="last")
 
 
+def cached_result_keys(results, cache_dir):
+    return {
+        candidate_key(row.subject, row.model, row.start, row.stop)
+        for row in results.itertuples(index=False)
+        if os.path.exists(oof_cache_path(cache_dir, row.subject, row.model, row.start, row.stop))
+    }
+
+
+def load_oof_lookup(subject_pool, cache_dir):
+    oof_lookup = {}
+    for row in subject_pool.itertuples(index=False):
+        cache_path = oof_cache_path(cache_dir, row.subject, row.model, row.start, row.stop)
+        if not os.path.exists(cache_path):
+            raise FileNotFoundError(
+                f"Missing OOF cache for {row.subject}/{row.model}/{row.start}:{row.stop}: {cache_path}"
+            )
+        oof_lookup[candidate_key(row.subject, row.model, row.start, row.stop)] = np.load(cache_path)
+    return oof_lookup
+
+
 def append_result_row(path, row):
+    ensure_parent_dir(path)
     row_df = pd.DataFrame([row])
     row_df.to_csv(path, mode="a", header=not os.path.exists(path), index=False)
