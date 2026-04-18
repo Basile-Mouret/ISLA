@@ -54,7 +54,7 @@ For binary classes with class covariance matrices `Sigma_1` and `Sigma_2`, CSP f
 This yields filters that emphasize variance for one class while suppressing the other. After projection, CSP features are log-variances:
 
 ```math
-f_j(X) = \log\left(\operatorname{var}(w_j^\top X)\right).
+f_j(X) = \log\left(\mathrm{var}(w_j^\top X)\right).
 ```
 
 LDA then finds a linear separator in that feature space.
@@ -72,7 +72,7 @@ These are all FBCSP variants. The idea is to run CSP separately on several frequ
 For band `b`, let `X_b` be the band-passed trial. CSP produces features
 
 ```math
-f_{b,j}(X) = \log\left(\operatorname{var}(w_{b,j}^\top X_b)\right).
+f_{b,j}(X) = \log\left(\mathrm{var}(w_{b,j}^\top X_b)\right).
 ```
 
 All bandwise features are concatenated into one vector, then `SelectKBest(f_classif)` keeps the top `k` ANOVA-ranked features before LDA.
@@ -129,7 +129,7 @@ followed by vectorization of the symmetric matrix. This turns the non-Euclidean 
 The covariance regularization is shrinkage of the sample covariance `S` toward a scaled identity:
 
 ```math
-\hat{\Sigma} = (1-\lambda) S + \lambda \frac{\operatorname{tr}(S)}{C} I.
+\hat{\Sigma} = (1-\lambda) S + \lambda \frac{\mathrm{tr}(S)}{C} I.
 ```
 
 The code uses `estimator="oas"` for these tangent-space models.
@@ -266,13 +266,13 @@ For a candidate combination to be valid:
 For two prediction vectors `p_a` and `p_b`, disagreement is
 
 ```math
-\operatorname{disagreement}(p_a, p_b) = \frac{1}{n} \sum_{i=1}^{n} \mathbf{1}[p_{a,i} \neq p_{b,i}].
+\mathrm{disagreement}(p_a, p_b) = \frac{1}{n} \sum_{i=1}^{n} \mathbf{1}[p_{a,i} \neq p_{b,i}].
 ```
 
 Double fault is
 
 ```math
-\operatorname{doublefault}(p_a, p_b, y) = \frac{1}{n} \sum_{i=1}^{n} \mathbf{1}[p_{a,i} \neq y_i \land p_{b,i} \neq y_i].
+\mathrm{doublefault}(p_a, p_b, y) = \frac{1}{n} \sum_{i=1}^{n} \mathbf{1}[p_{a,i} \neq y_i \land p_{b,i} \neq y_i].
 ```
 
 For an ensemble, the script averages these pairwise values across all model pairs.
