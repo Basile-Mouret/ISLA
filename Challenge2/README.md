@@ -6,7 +6,7 @@ The two entrypoints are `search_pipeline.py` for the full heavy search and `trai
 
 ## Data Flow
 
-For each subject, a candidate model crops the trial to `start:stop`, applies band filtering or filter-bank decomposition, extracts features, fits a simple classifier, and then contributes to subject-level ensemble voting. A trial is denoted `X \in R^{C \times T}`, where `C` is the number of EEG channels and `T` is the number of time samples.
+For each subject, a candidate model crops the trial to `start:stop`, applies band filtering or filter-bank decomposition, extracts features, fits a simple classifier, and then contributes to subject-level ensemble voting. A trial is denoted by $X \in \mathbb{R}^{C \times T}$, where $C$ is the number of EEG channels and $T$ is the number of time samples.
 
 ## Model Families
 
@@ -14,7 +14,7 @@ For each subject, a candidate model crops the trial to `start:stop`, applies ban
 
 The `mne_csp_8_30_lda` pipeline crops the trial, applies a zero-phase 4th-order Butterworth band-pass filter from 8 to 30 Hz, fits Common Spatial Patterns with `n_components=6`, `reg="oas"`, epoch-wise covariance estimation, and log-variance features, then trains shrinkage LDA with `solver="lsqr", shrinkage="auto"`.
 
-For binary classes with covariance matrices `Sigma_1` and `Sigma_2`, CSP finds spatial filters `w` that maximize
+For binary classes with covariance matrices $\Sigma_1$ and $\Sigma_2$, CSP finds spatial filters $w$ that maximize
 
 $$
 \max_w \frac{w^\top \Sigma_1 w}{w^\top \Sigma_2 w}.
@@ -32,7 +32,7 @@ LDA then finds a linear separator in that feature space.
 
 The FBCSP variants are `mne_fbcsp_lda`, `fbcsp_broad_c6_k16_lda`, and `fbcsp_dense_c6_k20_lda`. They run CSP separately on several frequency bands, concatenate the log-variance features, optionally keep the best ones with `SelectKBest(f_classif)`, and classify with LDA.
 
-For band `b`, let `X_b` be the band-passed trial. The CSP features are
+For band $b$, let $X_b$ be the band-passed trial. The CSP features are
 
 $$
 f_{b,j}(X) = \log\left(\mathrm{var}(w_{b,j}^\top X_b)\right).
@@ -46,7 +46,7 @@ These models work well because motor imagery information is concentrated in mu a
 
 The tangent-space variants are `riemann_ts_lr_6_35` and `riemann_ts_lr_8_30`. Each pipeline crops the trial, band-pass filters it to either 6-35 Hz or 8-30 Hz, estimates covariance with OAS shrinkage, maps the covariance matrix to tangent space at a reference mean covariance, standardizes the tangent features, and fits logistic regression with `C=1.0` and `max_iter=4000`.
 
-If `C_i \in S_{++}^C` is the trial covariance and `G` is the reference mean covariance, the local tangent-space map is
+If $C_i \in S_{++}^C$ is the trial covariance and $G$ is the reference mean covariance, the local tangent-space map is
 
 $$
 T_i = \log\left(G^{-1/2} C_i G^{-1/2}\right).
@@ -72,7 +72,7 @@ $$
 \hat{k} = \arg\min_k d_R(C, M_k),
 $$
 
-where `M_k` is the class centroid and the affine-invariant Riemannian distance is
+where $M_k$ is the class centroid and the affine-invariant Riemannian distance is
 
 $$
 d_R(C_1, C_2) = \left\| \log\left(C_1^{-1/2} C_2 C_1^{-1/2}\right) \right\|_F.
@@ -106,11 +106,11 @@ After the full search for one subject, the script keeps the top 8 windows for ea
 
 The final selection searches all valid combinations of size 2 or 3. In the heavy run, the defaults were `min_ensemble_size=2` and `max_ensemble_size=3`, and every selected subject ensemble ended up with size 3.
 
-A combination is valid only if the same model definition appears at most once, the same family appears at most twice, two same-family candidates are not almost identical in time window, and the ensemble has enough behavioral diversity. In code, the same-family window check rejects pairs with both `|start_a - start_b| < 96` and `|stop_a - stop_b| < 96`, and the diversity threshold requires `avg_disagreement >= 0.04` for multi-model ensembles.
+A combination is valid only if the same model definition appears at most once, the same family appears at most twice, two same-family candidates are not almost identical in time window, and the ensemble has enough behavioral diversity. In code, the same-family window check rejects pairs with both $|start_a - start_b| < 96$ and $|stop_a - stop_b| < 96$, and the diversity threshold requires average disagreement $d \ge 0.04$ for multi-model ensembles.
 
 ### Diversity Metrics
 
-For two prediction vectors `p_a` and `p_b`, disagreement is
+For two prediction vectors $p_a$ and $p_b$, disagreement is
 
 $$
 \mathrm{disagreement}(p_a, p_b) = \frac{1}{n} \sum_{i=1}^{n} \mathbf{1}[p_{a,i} \neq p_{b,i}].
@@ -126,18 +126,18 @@ For an ensemble, these values are averaged over all model pairs.
 
 ### Weighted Voting and Selection Score
 
-Given predictions `\hat{y}^{(m)}` from each selected model `m`, the final prediction is a weighted majority vote:
+Given predictions $\hat{y}^{(m)}$ from each selected model $m$, the final prediction is a weighted majority vote:
 
 $$
 \hat{y}_i = \arg\max_{c \in \mathcal{C}} \sum_m w_m \mathbf{1}[\hat{y}^{(m)}_i = c].
 $$
 
-The weight `w_m` is that model's cross-validated `mean_accuracy`.
+The weight $w_m$ is that model's cross-validated `mean_accuracy`.
 
-The ensemble selection score is
+If $a$ is the ensemble accuracy, $d$ is the average disagreement, and $f$ is the average double fault, the selection score is
 
 $$
-\text{score} = \text{ensemble\_accuracy} + 0.03 \cdot \text{avg\_disagreement} - 0.02 \cdot \text{avg\_double\_fault}.
+s = a + 0.03 d - 0.02 f.
 $$
 
 This prefers high out-of-fold ensemble accuracy, some disagreement, and a low shared failure rate. Tie-breaking follows `(selection score, ensemble accuracy, avg disagreement, -avg double fault)`.
