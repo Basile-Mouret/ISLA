@@ -33,6 +33,13 @@ def parse_args():
     parser.add_argument("--submissions-dir", default="submissions")
     parser.add_argument("--sample-rate-hz", type=float, default=256.0)
     parser.add_argument("--cv-folds", type=int, default=4)
+    parser.add_argument(
+        "--verbose",
+        type=int,
+        default=1,
+        choices=[0, 1, 2],
+        help="Logging verbosity: 0=summary only, 1=per-candidate, 2=per-fold.",
+    )
     parser.add_argument("--n-jobs", type=int, default=1, help="Number of parallel candidate workers.")
     parser.add_argument(
         "--inner-threads",
@@ -73,9 +80,9 @@ def parse_args():
     return parser.parse_args()
 
 
-def setup_logging(log_file_path):
+def setup_logging(log_file_path, verbose):
     logger = logging.getLogger("heavy_search")
-    logger.setLevel(logging.INFO)
+    logger.setLevel(logging.INFO if verbose > 0 else logging.WARNING)
     logger.handlers.clear()
     logger.propagate = False
 
@@ -197,17 +204,25 @@ def evaluate_candidate_task(
     split_list,
     cache_path,
     inner_threads,
+    logger,
+    verbose,
+    log_label,
 ):
     oof_pred = np.empty(y_train.shape[0], dtype="<U16")
     fold_scores = []
 
     with threadpool_limits(limits=inner_threads):
-        for train_idx, valid_idx in split_list:
+        for fold_index, (train_idx, valid_idx) in enumerate(split_list, start=1):
+            if verbose >= 2:
+                logger.info("%s FOLD %d/%d", log_label, fold_index, len(split_list))
             model = build_model(model_name=model_name, sample_rate_hz=sample_rate_hz, start=start, stop=stop)
             model.fit(X_train[train_idx], y_train[train_idx])
             pred = model.predict(X_train[valid_idx])
             oof_pred[valid_idx] = pred
-            fold_scores.append(accuracy_score(y_train[valid_idx], pred))
+            fold_score = accuracy_score(y_train[valid_idx], pred)
+            fold_scores.append(fold_score)
+            if verbose >= 2:
+                logger.info("%s FOLD %d/%d SCORE %.4f", log_label, fold_index, len(split_list), fold_score)
 
     temp_path = f"{cache_path}.tmp.npy"
     np.save(temp_path, oof_pred)
@@ -392,7 +407,7 @@ def main():
 
     tag = run_tag(args)
     log_file = args.log_file or os.path.join(args.submissions_dir, f"heavy_search_{tag}.log")
-    logger = setup_logging(log_file)
+    logger = setup_logging(log_file, args.verbose)
 
     logger.info("Run tag: %s", tag)
     logger.info("Results CSV: %s", args.results_csv)
@@ -400,6 +415,7 @@ def main():
     logger.info("Models CSV: %s", args.models_csv)
     logger.info("Models MD: %s", args.models_md)
     logger.info("Output model name: %s", args.output_model_name)
+    logger.info("Verbose level: %d", args.verbose)
     logger.info("Parallel workers (n_jobs): %d", args.n_jobs)
     logger.info("Inner threads per worker: %d", args.inner_threads)
 
@@ -470,6 +486,9 @@ def main():
                     split_list=split_list,
                     cache_path=cache_path,
                     inner_threads=args.inner_threads,
+                    logger=logger,
+                    verbose=args.verbose,
+                    log_label=f"[search {processed}/{remaining_configs}] {label}",
                 )
                 append_result_row(args.results_csv, row)
                 done_keys.add(key)
@@ -493,6 +512,9 @@ def main():
                         split_list,
                         cache_path,
                         args.inner_threads,
+                        logger,
+                        args.verbose,
+                        f"{subject} | {model_name} | samples_{start}_{stop}",
                     )
                     future_map[future] = (model_name, start, stop, key)
 
