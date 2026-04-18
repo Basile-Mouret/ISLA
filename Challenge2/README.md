@@ -1,5 +1,3 @@
-# Models
-
 ## Overview
 
 The final approach is a subject-specific classical EEG pipeline for binary motor imagery classification (`left_hand` vs `right_hand`).
@@ -10,6 +8,13 @@ The two runnable scripts are:
 
 - `search_pipeline.py`: full heavy search with caching, CV, diversity-aware selection, and submission packaging.
 - `train_top3_diverse.py`: trains only the exact frozen final ensemble and packages a submission.
+
+Shared code used by both scripts lives in the `utils/` package:
+
+- `utils/models.py`
+- `utils/file_manager.py`
+- `utils/selection.py`
+- `utils/helpers.py`
 
 ## Data Flow
 

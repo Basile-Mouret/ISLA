@@ -1,13 +1,13 @@
 import argparse
 import os
 
-from search_pipeline import (
-    SUBJECTS,
+from utils.file_manager import (
     load_subject_data,
     package_submission_dir,
-    predict_weighted_ensemble,
     write_prediction_dir,
 )
+from utils.helpers import SUBJECTS
+from utils.models import predict_weighted_ensemble
 
 
 TOP3_DIVERSE = {
